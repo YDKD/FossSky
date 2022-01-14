@@ -2,7 +2,7 @@ pipeline {
     agent any                            // agent节点，any告诉jenkins 任何可用的agent都能执行                
 
     environment {
-        Name = 'Eric'                     // 这个是自定义的顶级pipeline全局变量
+        Name = 'eric'                     // 这个是自定义的顶级pipeline全局变量
     }
 
     options {
