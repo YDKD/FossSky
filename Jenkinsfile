@@ -55,9 +55,6 @@ pipeline {
                 stage('build-dev') {
                                   
                     when {
-                        // beforeAgent 是指在进入agent ，如果when的条件对，才进入，错则不进入
-                        // 就是可以加快流水线的运行啦
-                        beoreAgent true   
                         branch 'dev'
                     }
                   
