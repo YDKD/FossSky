@@ -56,7 +56,6 @@ pipeline {
                     when {
                         // beforeAgent 是指在进入agent ，如果when的条件对，才进入，错则不进入
                         // 就是可以加快流水线的运行啦
-                        beoreAgent true
                         branch 'dev'
                     }
                     agent {
@@ -74,7 +73,6 @@ pipeline {
 
                 stage('build-release') {
                     when {
-                        beforeAgent true
                         branch 'release'
                     }
 
@@ -92,7 +90,6 @@ pipeline {
                 }
                 stage('build-master') {
                     when {
-                        beforeAgent true
                         branch 'master'
                     }
 
@@ -119,7 +116,6 @@ pipeline {
 
         stage('deliver') {
             when {
-                beforeAgent true
                 anyOf {
                     branch 'dev'
                     branch 'release'
@@ -133,7 +129,6 @@ pipeline {
 
         stage('deploy') {
             when {
-                beforeAgent true
                 branch 'master'
             }
 
