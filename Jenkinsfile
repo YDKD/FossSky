@@ -36,6 +36,7 @@ pipeline {
 
             steps {
                 sh "printenv"
+                sh './jenkins/script/pre-build.sh' //我们把主要的功能写在pre-build.sh脚本里面
                 echo "pre-build"
                 echo "test webhook"
             }
