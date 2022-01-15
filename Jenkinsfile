@@ -108,11 +108,14 @@ pipeline {
             }
         }
 
-        stage('artifacts-manage') {
+        stage("artifacts-manage"){
             steps {
-                echo 'artifacts'
+                echo "artifacts"
+                sh './jenkins/script/artifacts-manage.sh'
+                archiveArtifacts artifacts:"${artifactsDir}/${GIT_COMMIT}_dist.tar.gz" // 把我们本次构建的压缩文件归档
             }
         }
+
 
         stage('deliver') {
             when {
