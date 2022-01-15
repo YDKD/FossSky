@@ -35,10 +35,8 @@ pipeline {
             }
 
             steps {
-                sh "printenv"
+                sh "printenv" //打印jenkins全局环境变量
                 sh './jenkins/script/pre-build.sh' //我们把主要的功能写在pre-build.sh脚本里面
-                echo "pre-build"
-                echo "test webhook"
             }
         }
       
