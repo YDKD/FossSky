@@ -112,6 +112,7 @@ pipeline {
             steps {
                 echo "artifacts"
                 sh './jenkins/script/artifacts-manage.sh'
+                archiveArtifacts artifacts:"${artifactsDir}/${GIT_COMMIT}_dist.tar.gz" // 把我们本次构建的压缩文件归档
             }
         }
 
