@@ -2,7 +2,13 @@ pipeline {
     agent any                            // agent节点，any告诉jenkins 任何可用的agent都能执行                
 
     environment {
-        Name = 'eric'                     // 这个是自定义的顶级pipeline全局变量
+        Name = 'eric'   
+        cacheDir = "stage" //定义缓存的目录名字
+            cachePackage = "${cacheDir}/package.json" //定义缓存的package.json
+            cacheCommitIDFile = "${cacheDir}/.commitIDCache.txt" //把成功打包的commitID缓存到这里
+    			artifactsDir = "${cacheDir}/artifacts" //制品缓存的目录，构建成功的制品我们放这里
+    		    resetFlagFile = "${cacheDir}/.resetFile" //回滚标志的文件
+            cacheCommitIDMax = 5         //缓存版本的最大值               // 这个是自定义的顶级pipeline全局变量
     }
 
     options {
