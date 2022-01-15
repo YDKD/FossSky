@@ -29,7 +29,7 @@ pipeline {
             agent {                  //    代表阶段运行在一个代理的docker nodejs容器中
                 docker {
                     image 'node:14.18.0'  
-                    // 想在 docker 容器中运行代码，但是也想使用流水线所定义的相同节点或和工作空间，必须设置这个
+                    // 想在 docker 容器中运行代码，但是也想使用流水线所定义的相同节点或和工作空间，必须设置这个 
                     reuseNode true   
                 }       
             }
