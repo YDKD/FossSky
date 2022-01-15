@@ -56,12 +56,11 @@ pipeline {
                     when {
                         // beforeAgent 是指在进入agent ，如果when的条件对，才进入，错则不进入
                         // 就是可以加快流水线的运行啦
-                        beoreAgent true
                         branch 'dev'
                     }
                     agent {
                         docker {
-                            image 'node:10.21.0'
+                            image 'node:14.18.0'
                             reuseNode true
                         }
                     }
@@ -74,13 +73,12 @@ pipeline {
 
                 stage('build-release') {
                     when {
-                        beforeAgent true
                         branch 'release'
                     }
 
                     agent {
                         docker {
-                            image 'node:10.21.0'
+                            image 'node:14.18.0'
                             reuseNode true
                         }
                     }
@@ -92,13 +90,12 @@ pipeline {
                 }
                 stage('build-master') {
                     when {
-                        beforeAgent true
                         branch 'master'
                     }
 
                     agent {
                         docker {
-                            image 'node:10.21.0'
+                            image 'node:14.18.0'
                             reuseNode true
                         }
                     }
@@ -119,7 +116,6 @@ pipeline {
 
         stage('deliver') {
             when {
-                beforeAgent true
                 anyOf {
                     branch 'dev'
                     branch 'release'
@@ -133,7 +129,6 @@ pipeline {
 
         stage('deploy') {
             when {
-                beforeAgent true
                 branch 'master'
             }
 
