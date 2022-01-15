@@ -108,11 +108,13 @@ pipeline {
             }
         }
 
-        stage('artifacts-manage') {
+        stage("artifacts-manage"){
             steps {
-                echo 'artifacts'
+                echo "artifacts"
+                sh './jenkins/script/artifacts-manage.sh'
             }
         }
+
 
         stage('deliver') {
             when {
