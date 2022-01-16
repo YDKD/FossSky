@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         Name = 'eric'
+        sshHostName = "server"
         cacheDir = 'stage' //定义缓存的目录名字
             cachePackage = "${cacheDir}/package.json" //定义缓存的package.json
             cacheCommitIDFile = "${cacheDir}/.commitIDCache.txt" //把成功打包的commitID缓存到这里
@@ -57,6 +58,9 @@ pipeline {
                         // beforeAgent 是指在进入agent ，如果when的条件对，才进入，错则不进入
                         // 就是可以加快流水线的运行啦
                         branch 'dev'
+                        expression{
+                     	    return !(fileExists("${resetFlagFile}"))
+                    	}
                     }
                     agent {
                         docker {
@@ -109,6 +113,11 @@ pipeline {
         }
 
         stage("artifacts-manage"){
+            when {
+                expression{
+                    return !(fileExists("${resetFlagFile}"))
+                }
+            }
             steps {
                 echo "artifacts"
                 sh './jenkins/script/artifacts-manage.sh'
