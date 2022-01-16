@@ -125,6 +125,26 @@ pipeline {
             }
         }
 
+        stage("reset"){
+            when {
+                expression{
+                    return fileExists("${resetFlagFile}")
+                }
+                anyOf { 
+                    branch 'dev'
+                    branch 'release'
+                    branch 'master'
+                    }
+                }
+            
+            steps {
+                echo "是回滚啊啊啊啊"
+                //当然我们这里为了方便下载
+                archiveArtifacts artifacts:"${artifactsDir}/${GIT_COMMIT}_dist.tar.gz"
+            }
+        }
+
+
 
         stage('deliver') {
             when {
