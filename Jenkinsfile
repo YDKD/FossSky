@@ -48,6 +48,9 @@ pipeline {
                     branch 'release'
                     branch 'master'
                 }
+                expression{
+                    return !(fileExists("${resetFlagFile}"))
+                }
             }
             // 如果设置了true 那么我们有任何一个并发步骤失败那就全都都失败，
             // 因为我们是用来做不同分支任务触发时候的构建选择，所以这个不需要
@@ -58,9 +61,6 @@ pipeline {
                         // beforeAgent 是指在进入agent ，如果when的条件对，才进入，错则不进入
                         // 就是可以加快流水线的运行啦
                         branch 'dev'
-                        expression{
-                     	    return !(fileExists("${resetFlagFile}"))
-                    	}
                     }
                     agent {
                         docker {
