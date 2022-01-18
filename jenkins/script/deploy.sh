@@ -4,7 +4,6 @@
 #如果是回滚的操作，我们不用再把构建上传一次啦，服务器已经有啦
 if [ ! -f $resetFlagFile ]
 then
-    echo `${artifactsDir}/${GIT_COMMIT}_dist.tar.gz ${sshHostName}:/data/Foss-Sky/${BRANCH_NAME}/`
     # 将本次构建的压缩包上传到资源服务器的指定目录
     scp ${artifactsDir}/${GIT_COMMIT}_dist.tar.gz ${sshHostName}:/data/Foss-Sky/${BRANCH_NAME}/ || exit 1
 fi
