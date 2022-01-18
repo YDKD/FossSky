@@ -127,9 +127,6 @@ pipeline {
 
         stage("reset"){
             when {
-                expression{
-                    return fileExists("${resetFlagFile}")
-                }
                 anyOf { 
                     branch 'dev'
                     branch 'release'
