@@ -2,7 +2,7 @@ pipeline {
     agent any                            // agent节点，any告诉jenkins 任何可用的agent都能执行
 
     environment {
-        Name = 'eric'
+        Name = 'YDKD'
         sshHostName = "server"
         cacheDir = 'stage' //定义缓存的目录名字
             cachePackage = "${cacheDir}/package.json" //定义缓存的package.json
@@ -155,7 +155,8 @@ pipeline {
             }
 
             steps {
-                echo 'start deliver'
+                echo "start deliver"
+                sh "./jenkins/script/deliver.sh"
             }
         }
 
