@@ -174,27 +174,56 @@ pipeline {
     }
 
     //post 就是流水线的运行结果状态啦，我们慢点会在这里设置邮件通
-    post {
-        changed {
+    post { 
+        changed{
             echo 'I changed!'
         }
 
-        failure {
+        failure{
             echo 'I failed!'
+            configFileProvider([configFile(fileId: 'email-tmp-fail', targetLocation: 'email-fail.html', variable: 'content')]) {
+               script {
+                   template = readFile encoding: 'UTF-8', file: "${content}"
+                   emailext(
+                    subject: "Job [${env.JOB_NAME}] - Status: fail",
+                    body: """${template}""",
+                    recipientProviders: [culprits(),requestor(),developers()], 
+                    to: "ydkd0606@163.com",
+                   )
+               }
+           }
+
         }
 
-        success {
+        success{
             echo 'I success'
+            configFileProvider([configFile(fileId: 'email-tmp-success', targetLocation: 'email-success.html', variable: 'content')]) {
+               script {
+                   template = readFile encoding: 'UTF-8', file: "${content}"
+                   emailext(
+                    subject: "Job [${env.JOB_NAME}] - Status: Success",
+                    body: """${template}""",
+                    recipientProviders: [requestor(),developers()], 
+                    to: "ydkd0606@163.com",
+                   )
+               }
+           }
         }
 
-        always {
+        always{
             echo 'I always'
+            script{
+                if(fileExists("${resetFlagFile}")){
+                    sh "rm -r ${resetFlagFile}"  //回滚标志文件记得删
+                }
+            }
         }
-        unstable {
-            echo 'unstable'
+        unstable{
+            echo "unstable"
         }
-        aborted {
-            echo 'aborted'
+        aborted{
+            echo "aborted"
         }
     }
+
 }
