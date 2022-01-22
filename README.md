@@ -1,5 +1,2 @@
 # foss-sky
 
-### branch
-
-relese
