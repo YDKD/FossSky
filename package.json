@@ -9,27 +9,35 @@
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue  --ext .ts src/",
     "preview": "vite preview",
     "prettier": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "dependencies": {
     "less": "^4.1.2",
     "vue": "^3.2.25"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.0.0",
     "@types/node": "^16.11.10",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.3.0",
+    "husky": "^7.0.0",
     "prettier": "^2.5.1",
-    "vue-eslint-parser": "^8.1.0",
     "typescript": "^4.5.2",
     "vite": "^2.7.2",
-    "vue-tsc": "^0.29.8",
-    "husky": "^7.0.0"
+    "vue-eslint-parser": "^8.1.0",
+    "vue-tsc": "^0.29.8"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
