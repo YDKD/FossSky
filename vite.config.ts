@@ -15,7 +15,7 @@ export default defineConfig({
         replacement: path.resolve(__dirname, 'src/components')
       }
     ],
-    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', 'md']
   },
   plugins: [vue()]
 })
