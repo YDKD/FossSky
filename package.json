@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "less": "^4.1.2",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@types/node": "^16.11.10",
