@@ -1,3 +1,3 @@
 import { App } from 'vue'
 
-export default function registerApp(app: App) {}
+export default function globalRegister(app: App) {}

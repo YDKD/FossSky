@@ -4,11 +4,11 @@ import App from './App.vue'
 import router from './router'
 import { store, setupStore } from './store'
 
-import registerApp from './global'
+import globalRegister from './global'
 
 const app = createApp(App)
 
-registerApp(app)
+app.use(globalRegister)
 // register router
 app.use(router)
 // register store
