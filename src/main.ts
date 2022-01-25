@@ -1,13 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-// import 'element-plus/dist/index.css'
-
 import router from './router'
 import { store, setupStore } from './store'
 
+import registerApp from './global'
+
 const app = createApp(App)
 
+registerApp(app)
 // register router
 app.use(router)
 // register store
