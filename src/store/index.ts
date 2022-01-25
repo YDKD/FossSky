@@ -6,8 +6,3 @@ export const store = createPinia()
 export function setupStore() {
   setupUser()
 }
-
-export default {
-  store,
-  setupUser
-}
