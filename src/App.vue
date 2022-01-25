@@ -3,7 +3,7 @@
   <router-link to="/main">首页</router-link>
 
   <div>
-    <button @click="welcome">Welcome</button>
+    <el-button type="success" @click="welcome">Welcome</el-button>
   </div>
   <router-view />
 </template>
