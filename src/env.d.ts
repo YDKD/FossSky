@@ -6,3 +6,9 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+interface ImportMetaEnv {
+  readonly VITE_SOME_KEY: string
+  readonly NODE_ENV: string
+  readonly VITE_REQUEST_URL: string
+}
