@@ -10,6 +10,9 @@
 
 <script setup lang="ts">
 import { ElMessage } from 'element-plus'
+import { getData } from '@/api/getApi'
+
+getData()
 
 const welcome = () => {
   ElMessage.success({
