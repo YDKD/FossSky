@@ -7,20 +7,20 @@ const defaultRequest = new FossRequest({
   timeout: TIMEOUT,
   interceptors: {
     requestInterceptor: (config) => {
-      console.log('请求拦截')
+      // console.log('实例请求拦截')
       return config
     },
-    requestInterceptorCatch: (config) => {
-      console.log('请求错误')
-      return config
+    requestInterceptorCatch: (error) => {
+      // console.log('实例请求错误')
+      return error
     },
-    reponseInterceptor: (config) => {
-      console.log('响应拦截')
-      return config
+    reponseInterceptor: (res) => {
+      // console.log('实例响应拦截')
+      return res
     },
-    reponseInterceptorCatch: (config) => {
-      console.log('响应错误')
-      return config
+    reponseInterceptorCatch: (error) => {
+      // console.log('实例响应错误')
+      return error
     }
   }
 })
