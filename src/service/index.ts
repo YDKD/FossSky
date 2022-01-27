@@ -7,6 +7,12 @@ const defaultRequest = new FossRequest({
   timeout: TIMEOUT,
   interceptors: {
     requestInterceptor: (config) => {
+      // 实例Token携带
+      const token = ''
+      if (token) {
+        config.headers!.Authorization = `Bear ${token}`
+      }
+
       // console.log('实例请求拦截')
       return config
     },

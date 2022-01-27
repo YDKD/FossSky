@@ -1,18 +1,37 @@
 import axios from 'axios'
-import type { AxiosInstance, AxiosRequestConfig } from 'axios'
+import type { AxiosInstance } from 'axios'
 import type { FossRequestConfig, FossRequestInterceptor } from './type'
+
+import { ElLoading } from 'element-plus'
+import { LoadingInstance } from 'element-plus/lib/components/loading/src/loading'
+
+import { DEFAULT_REQUEST_LOADING } from '../constant'
+
 class FossRequest {
   requestInstance: AxiosInstance
   interceptor?: FossRequestInterceptor
+  requestLoading?: LoadingInstance
+  showRequestLoading: boolean
 
   constructor(config: FossRequestConfig) {
     this.requestInstance = axios.create(config)
     this.interceptor = config.interceptors
+    this.showRequestLoading =
+      config.showRequestLoading ?? DEFAULT_REQUEST_LOADING
 
     // add instance interceptor
     this.requestInstance.interceptors.request.use(
       (req) => {
         // console.log('全局实例的请求拦截')
+
+        if (this.showRequestLoading) {
+          this.requestLoading = ElLoading.service({
+            lock: true,
+            text: '数据请求中~',
+            background: 'rgba(0, 0, 0, 0.6)'
+          })
+        }
+
         return req
       },
       (error) => {
@@ -22,10 +41,35 @@ class FossRequest {
     this.requestInstance.interceptors.response.use(
       (res) => {
         // console.log('全局实例的响应拦截')
-        return res
+
+        // remove requestLoading
+        this.requestLoading?.close()
+
+        const data = res.data,
+          returnCode = data.returnCode
+        if (returnCode != '-10001') {
+          return res.data
+        } else {
+          // Error Message Tips
+          console.log('Elemessage错误')
+        }
       },
       (error) => {
-        // console.log('响应失败')
+        // remove request loading
+        this.requestLoading?.close()
+
+        const errorCode = error.response.status
+        // use Router to handle
+        switch (errorCode) {
+          case 404:
+            console.log('404错误')
+            break
+          case 500:
+            console.log('服务内部错误')
+            break
+          default:
+            break
+        }
       }
     )
 
@@ -46,14 +90,28 @@ class FossRequest {
       config = config.interceptors.requestInterceptor(config)
     }
 
-    this.requestInstance.request(config).then((res) => {
-      // single reponse interceptor
-      if (config.interceptors?.reponseInterceptor) {
-        config = config.interceptors.reponseInterceptor(res)
-      }
+    // handle request loading
+    if (config.showRequestLoading == false) {
+      this.showRequestLoading = false
+    }
 
-      console.log(res)
-    })
+    this.requestInstance
+      .request(config)
+      .then((res) => {
+        // single reponse interceptor
+        if (config.interceptors?.reponseInterceptor) {
+          config = config.interceptors.reponseInterceptor(res)
+        }
+
+        console.log(res)
+      })
+      .catch((error) => {
+        // console.log(error)
+      })
+      .finally(() => {
+        // initial request loading
+        this.showRequestLoading = DEFAULT_REQUEST_LOADING
+      })
   }
 }
 

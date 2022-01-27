@@ -11,4 +11,5 @@ export interface FossRequestInterceptor {
 // 请求拦截拓展
 export interface FossRequestConfig extends AxiosRequestConfig {
   interceptors?: FossRequestInterceptor
+  showRequestLoading?: boolean
 }
