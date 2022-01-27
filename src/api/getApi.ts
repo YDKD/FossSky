@@ -5,6 +5,16 @@ export function getData(params?: any) {
   return defaultRequest.request({
     url: '/home/multidata',
     method: 'GET',
-    params
+    params,
+    interceptors: {
+      requestInterceptor: (req) => {
+        // console.log('单个请求拦截')
+        return req
+      },
+      reponseInterceptor: (res) => {
+        // console.log('单个响应拦截')
+        return res
+      }
+    }
   })
 }
