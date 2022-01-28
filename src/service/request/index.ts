@@ -84,34 +84,37 @@ class FossRequest {
     )
   }
 
-  request(config: FossRequestConfig): any {
-    // single request interceptor
-    if (config.interceptors?.requestInterceptor) {
-      config = config.interceptors.requestInterceptor(config)
-    }
+  request<T>(config: FossRequestConfig): Promise<T> {
+    return new Promise((resolve, reject) => {
+      // single request interceptor
+      if (config.interceptors?.requestInterceptor) {
+        config = config.interceptors.requestInterceptor(config)
+      }
 
-    // handle request loading
-    if (config.showRequestLoading == false) {
-      this.showRequestLoading = false
-    }
+      // handle request loading
+      if (config.showRequestLoading == false) {
+        this.showRequestLoading = false
+      }
 
-    this.requestInstance
-      .request(config)
-      .then((res) => {
-        // single reponse interceptor
-        if (config.interceptors?.reponseInterceptor) {
-          config = config.interceptors.reponseInterceptor(res)
-        }
+      this.requestInstance
+        .request<any, T>(config)
+        .then((res) => {
+          // single reponse interceptor
+          if (config.interceptors?.reponseInterceptor) {
+            // res = config.interceptors.reponseInterceptor(res)
+          }
 
-        console.log(res)
-      })
-      .catch((error) => {
-        // console.log(error)
-      })
-      .finally(() => {
-        // initial request loading
-        this.showRequestLoading = DEFAULT_REQUEST_LOADING
-      })
+          resolve(res)
+        })
+        .catch((error) => {
+          reject(error)
+          // console.log(error)
+        })
+        .finally(() => {
+          // initial request loading
+          this.showRequestLoading = DEFAULT_REQUEST_LOADING
+        })
+    })
   }
 }
 
