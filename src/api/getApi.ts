@@ -1,10 +1,5 @@
 import { defaultRequest } from '@/service'
-
-interface ReutrnDataType {
-  data: any
-  returnCode: string
-  success: boolean
-}
+import { ReutrnDataType } from './type'
 
 export function getData(params?: any) {
   return defaultRequest
