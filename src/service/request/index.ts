@@ -9,13 +9,13 @@ import { DEFAULT_REQUEST_LOADING } from '../constant'
 
 class FossRequest {
   requestInstance: AxiosInstance
-  interceptor?: FossRequestInterceptor
+  interceptors?: FossRequestInterceptor
   requestLoading?: LoadingInstance
   showRequestLoading: boolean
 
   constructor(config: FossRequestConfig) {
     this.requestInstance = axios.create(config)
-    this.interceptor = config.interceptors
+    this.interceptors = config.interceptors
     this.showRequestLoading =
       config.showRequestLoading ?? DEFAULT_REQUEST_LOADING
 
@@ -75,17 +75,17 @@ class FossRequest {
 
     // add request instance interceptor
     this.requestInstance.interceptors.request.use(
-      this.interceptor?.requestInterceptor,
-      this.interceptor?.requestInterceptorCatch
+      this.interceptors?.requestInterceptor,
+      this.interceptors?.requestInterceptorCatch
     )
 
     this.requestInstance.interceptors.response.use(
-      this.interceptor?.reponseInterceptor,
-      this.interceptor?.reponseInterceptorCatch
+      this.interceptors?.reponseInterceptor,
+      this.interceptors?.reponseInterceptorCatch
     )
   }
 
-  request<T>(config: FossRequestConfig): Promise<T> {
+  request<T>(config: FossRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       // single request interceptor
       if (config.interceptors?.requestInterceptor) {
@@ -102,7 +102,7 @@ class FossRequest {
         .then((res) => {
           // single reponse interceptor
           if (config.interceptors?.reponseInterceptor) {
-            // res = config.interceptors.reponseInterceptor(res)
+            res = config.interceptors.reponseInterceptor(res)
           }
 
           resolve(res)
