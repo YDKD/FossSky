@@ -19,7 +19,7 @@ class FossRequest {
     this.showRequestLoading =
       config.showRequestLoading ?? DEFAULT_REQUEST_LOADING
 
-    // add instance interceptor
+    // add global instance interceptor
     this.requestInstance.interceptors.request.use(
       (req) => {
         // console.log('全局实例的请求拦截')
@@ -73,6 +73,7 @@ class FossRequest {
       }
     )
 
+    // add request instance interceptor
     this.requestInstance.interceptors.request.use(
       this.interceptor?.requestInterceptor,
       this.interceptor?.requestInterceptorCatch
