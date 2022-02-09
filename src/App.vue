@@ -12,10 +12,14 @@
 import { ElMessage } from 'element-plus'
 import { getData } from '@/api/getApi'
 
-let { returnCode, data, success } = await getData()
-console.log('returnCode', returnCode)
-console.log('data', data)
-console.log('success', success)
+const getInitData = async () => {
+  let { returnCode, data, success } = await getData()
+  console.log('returnCode', returnCode)
+  console.log('data', data)
+  console.log('success', success)
+}
+
+getInitData()
 
 const welcome = () => {
   ElMessage.success({
