@@ -1,6 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
+import 'normalize.css'
+import './assets/css/index.less'
+import './assets/css/tailwind.css'
+
 import router from './router'
 import { store, setupStore } from './store'
 

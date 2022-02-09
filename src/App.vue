@@ -1,15 +1,10 @@
 <template>
-  <router-link to="/login">登录</router-link>
-  <router-link to="/main">首页</router-link>
-
-  <div>
-    <el-button type="success" @click="welcome">Welcome</el-button>
+  <div id="el-container">
+    <router-view />
   </div>
-  <router-view />
 </template>
 
 <script setup lang="ts">
-import { ElMessage } from 'element-plus'
 import { getData } from '@/api/getApi'
 
 const getInitData = async () => {
@@ -19,25 +14,11 @@ const getInitData = async () => {
   console.log('success', success)
 }
 
-getInitData()
-
-const welcome = () => {
-  ElMessage.success({
-    showClose: true,
-    type: 'success',
-    message: 'Welcome to my website',
-    duration: 2000
-  })
-}
+// getInitData()
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped lang="less">
+#el-container {
+  height: 100%;
 }
 </style>
