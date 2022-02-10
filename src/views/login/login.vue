@@ -15,11 +15,11 @@ import loginPanel from './components/login-panel.vue'
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(https://cdn.jsdelivr.net/gh/YDKD/Blogger/Docker/bg.jpg);
+  background-image: url('../../assets/img/bg.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  background-color: #464646;
+  background-color: #ccc;
 }
 </style>

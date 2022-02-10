@@ -1,40 +1,25 @@
 <template>
-  <div class="login-panel mb-32">
-    <h1 class="text-xl font-bold text-white text-center mb-2">后台系统</h1>
-    <el-tabs type="border-card" class="demo-tabs" stretch>
-      <el-tab-pane>
-        <template #label>
-          <span>
-            <el-icon><UserFilled /></el-icon>账号登录
-          </span>
-        </template>
-        <account-login />
-      </el-tab-pane>
-      <el-tab-pane>
-        <template #label>
-          <span>
-            <el-icon><Iphone /></el-icon>手机登录
-          </span>
-        </template>
-        <phone-login />
-      </el-tab-pane>
-    </el-tabs>
+  <div class="login-panel mb-32 p-5">
+    <!-- label -->
+    <h1
+      class="text-center pb-2 text-orange-500 border-b border-b-orange-500 font-bold text-xl tracking-widest"
+    >
+      登录
+    </h1>
+    <component :is="isLogin ? accountLogin : ''"></component>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { UserFilled, Iphone } from '@element-plus/icons-vue'
 import accountLogin from './account-login.vue'
-import phoneLogin from './phone-login.vue'
+
+const isLogin: Boolean = true
 </script>
 
 <style scoped lang="less">
 .login-panel {
   width: 320px;
-  .demo-tabs > ::v-deep .el-tabs__content {
-    background-color: #f4f5f7;
-    color: #6b778c;
-    font-weight: 600;
-  }
+  height: 400px;
+  background-color: #fff;
 }
 </style>
