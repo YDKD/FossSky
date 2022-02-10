@@ -39,9 +39,9 @@ module.exports = {
       'error',
       {
         html: {
-          void: 'always',
-          normal: 'never',
-          component: 'always'
+          void: 'never',
+          normal: 'any',
+          component: 'any'
         },
         svg: 'always',
         math: 'always'
