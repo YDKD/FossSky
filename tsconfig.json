@@ -18,6 +18,9 @@
       "store/*": [
         "src/store/*"
       ],
+      "components/*": [
+        "src/components/*"
+      ],
     },
     "types": ["element-plus/global"]
   },

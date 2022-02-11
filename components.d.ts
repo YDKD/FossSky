@@ -12,7 +12,7 @@ declare module 'vue' {
     ElInput: typeof import('element-plus/es')['ElInput']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    FossBg: typeof import('./src/components/foss-bg/index.vue')['default']
   }
 }
 
