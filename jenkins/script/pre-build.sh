@@ -15,7 +15,6 @@ set -x
 npm config set registry http://124.223.39.149:4873/
 
 # npm config list
-
 #判断缓存目录存在与否
 if [ ! -d $cacheDir ]
     then
