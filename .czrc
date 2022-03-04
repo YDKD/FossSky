@@ -1,6 +1,5 @@
 {
   "path": "cz-conventional-changelog",
-  "defaultType": "[build, release, chore, ci, docs, feat, fix, perf, refactor, revert, style, test]",
   "types": {
     "feat": {
       "description": "A new feature",
