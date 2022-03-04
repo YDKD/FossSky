@@ -18,8 +18,11 @@
       "store/*": [
         "src/store/*"
       ],
+      "components/*": [
+        "src/components/*"
+      ],
     },
     "types": ["element-plus/global"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite/utils/generateEnv.ts"]
 }
