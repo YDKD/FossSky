@@ -1,6 +1,6 @@
 {
   "name": "foss-sky",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "cross-env vite",
     "build": "cross-env vue-tsc --noEmit && vite build",
@@ -49,5 +49,10 @@
     "vite": "^2.7.2",
     "vue-eslint-parser": "^8.1.0",
     "vue-tsc": "^0.29.8"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
