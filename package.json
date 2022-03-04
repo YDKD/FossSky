@@ -49,10 +49,5 @@
     "vite": "^2.7.2",
     "vue-eslint-parser": "^8.1.0",
     "vue-tsc": "^0.29.8"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
