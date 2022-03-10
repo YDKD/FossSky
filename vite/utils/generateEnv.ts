@@ -7,7 +7,7 @@ import fs from 'fs'
  * @description: 系统环境变量生成
  * @return {*}
  */
-const generateEnv = (command: string) => {
+const generateEnv = (command?: string) => {
   const NODE_ENV: string = process.env.NODE_ENV || 'development'
   let envFiles: string[] = []
 
