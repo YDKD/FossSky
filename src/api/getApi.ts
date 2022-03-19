@@ -22,3 +22,11 @@ export function getData(params?: any) {
       return res
     })
 }
+
+export function checkExitInfo(params: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/user/exit',
+    method: 'GET',
+    params
+  })
+}
