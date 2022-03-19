@@ -13,25 +13,50 @@
             <el-form-item prop="account">
               <el-input
                 v-model="registerForm.account"
-                placeholder="用户名/邮箱"
+                placeholder="请输入用户名"
               ></el-input>
             </el-form-item>
             <el-form-item prop="password">
               <el-input
                 v-model="registerForm.password"
-                placeholder="密码"
+                type="password"
+                placeholder="请输入密码"
               ></el-input>
             </el-form-item>
             <el-form-item prop="confirmPassword">
               <el-input
                 v-model="registerForm.confirmPassword"
-                placeholder="密码"
+                type="password"
+                placeholder="请输入确认密码"
               ></el-input>
+            </el-form-item>
+            <el-form-item prop="email">
+              <el-input
+                v-model="registerForm.email"
+                type="email"
+                placeholder="请输入邮箱"
+              ></el-input>
+            </el-form-item>
+            <el-form-item prop="code">
+              <div class="flex justify-between">
+                <el-input
+                  v-model="registerForm.code"
+                  placeholder="邮箱验证码"
+                ></el-input>
+                <el-button
+                  :disabled="!passCheckValidate"
+                  type="primary"
+                  size="default"
+                  class="sendBtn"
+                  @click="sendEmail"
+                  >{{ sendBtnText }}</el-button
+                >
+              </div>
             </el-form-item>
           </el-form>
           <el-button
             class="w-full register-btn tracking-widest !bg-orange-500"
-            @click="register"
+            @click="register(registerFormRef)"
             >注册</el-button
           >
           <div class="my-3">
@@ -44,56 +69,24 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
-import type { ElForm } from 'element-plus'
 import router from '@/router'
-import { RegisterForm } from '../types'
 
 import FossBg from 'components/foss-bg/index.vue'
 
-type registerFormInstance = InstanceType<typeof ElForm>
-const registerFormRef = ref<registerFormInstance>()
-
-const registerForm: RegisterForm = reactive({
-  account: '',
-  password: '',
-  confirmPassword: ''
-})
-
-const registerRules = reactive({
-  account: [
-    {
-      required: true,
-      message: '请输入用户名/邮箱',
-      trigger: 'blur'
-    }
-  ],
-  password: [
-    {
-      required: true,
-      message: '请输入密码',
-      trigger: 'blur'
-    },
-    {
-      min: 6,
-      max: 20,
-      message: '密码长度为6-20',
-      trigger: 'blur'
-    }
-  ],
-  confirmPassword: [
-    {
-      required: true,
-      message: '请再次输入密码',
-      trigger: 'blur'
-    }
-  ]
-})
+// hooks
+import {
+  registerRules,
+  registerForm,
+  registerFormRef,
+  sendEmail,
+  sendBtnText,
+  register,
+  passCheckValidate
+} from '../hooks/index'
 
 const startLogin = () => {
   router.push({ path: '/login' })
 }
-const register = () => {}
 </script>
 
 <style scoped lang="less">
@@ -103,6 +96,9 @@ const register = () => {}
     .register-btn {
       color: #fff;
     }
+  }
+  .sendBtn {
+    margin-left: 5px;
   }
 }
 </style>

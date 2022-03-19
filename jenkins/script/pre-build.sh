@@ -3,7 +3,7 @@
 echo '0-build prepare'
 isResetID=false                                      #回滚标志判断
 cmpFlag=1                                            #package.json文件的对比标志
-packageJsonChange=false                              #package.json文件变化标志              
+packageJsonChange=false                              #package.json文件变化标志
 
 commitEmail='git config'
 set -x
@@ -11,9 +11,10 @@ set -x
 #npm config set registry https://registry.npm.taobao.org
 #npm config set strict-ssl false
 # npm config set registry "http://npm.wild-fox.cn"
-npm config set registry https://registry.npm.taobao.org
-# npm config list
+# npm config set registry https://registry.npm.taobao.org
+npm config set registry http://124.223.39.149:4873/
 
+# npm config list
 #判断缓存目录存在与否
 if [ ! -d $cacheDir ]
     then
@@ -28,14 +29,14 @@ if [ ! -d $cacheDir ]
 elif [ ! -f $cachePackage ] || [ ! -f $cacheCommitIDFile ]
     then
         if [ ! -f $cachePackage ]
-        then 
+        then
             echo "cache file package.json does no exist"
             echo "cp package.json to cache dir"
             cp package.json "$cacheDir/"
         fi
 
         if [ ! -f $cacheCommitIDFile ]
-        then 
+        then
             echo "cache file commitIdCache.txt does no exist"
             echo "create commitIdCache.txt to cache dir"
             echo "write the ID to commitIdCache.txt"
@@ -48,7 +49,7 @@ elif [ ! -f $cachePackage ] || [ ! -f $cacheCommitIDFile ]
         echo  "npm 安装"
        npm i || npm i || exit 1
 
-else 
+else
     echo "cache file exists"
 
     #这里我们判断一下新提交的commitID是不是有存在于缓存
@@ -63,9 +64,9 @@ else
     #对比新旧的package.json，看是否有变化
     cmp -s package.json $cachePackage
     cmpFlag=$?
-    #compare package.json 
-    if [ $cmpFlag != 0 ] 
-    then 
+    #compare package.json
+    if [ $cmpFlag != 0 ]
+    then
         packageJsonChange=true
     fi
 
@@ -79,13 +80,13 @@ else
         touch ${resetFlagFile}
     # ID不是重复的,而且package.json有更新
     elif [ $packageJsonChange = true ]
-    then 
+    then
         echo "package 更新"
         cp -f package.json "$cacheDir/"
         rm -rf node_modules
         sleep 1
         npm i || npm i || exit 1
-    else 
+    else
         echo "啥都不用干哈哈"
     fi
 
