@@ -6,7 +6,7 @@
           <el-form
             ref="loginFormRef"
             :model="loginForm"
-            :rules="rules"
+            :rules="LoginFormRules"
             label-position="left"
             class="demo-ruleForm"
           >
@@ -29,7 +29,7 @@
               label="下次自动登录"
               class="text-sm"
             ></el-checkbox>
-            <span class="jump">忘记密码</span>
+            <span class="jump" @click="resetPass">忘记密码</span>
           </div>
           <el-button
             class="w-full login-btn tracking-widest !bg-orange-500"
@@ -48,46 +48,16 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
-import type { ElForm } from 'element-plus'
-import { LoginForm } from '../types'
-import router from '@/router'
 import FossBg from 'components/foss-bg/index.vue'
-
-type FormInstance = InstanceType<typeof ElForm>
-
-// 自动登录checked
-let checked = ref(false)
-const loginFormRef = ref<FormInstance>()
-
-const loginForm: LoginForm = reactive({
-  account: '',
-  password: ''
-})
-
-const rules = reactive({
-  account: [
-    {
-      required: true,
-      message: '请输入用户名/邮箱',
-      trigger: 'blur'
-    }
-  ],
-  password: [
-    {
-      required: true,
-      message: '请输入密码',
-      trigger: 'blur'
-    }
-  ]
-})
-
-// login
-const login = () => {}
-
-const startRegister = () => {
-  router.push({ path: '/register' })
-}
+import {
+  loginFormRef,
+  loginForm,
+  LoginFormRules,
+  checked,
+  login,
+  startRegister,
+  resetPass
+} from '../hooks'
 </script>
 
 <style scoped lang="less">

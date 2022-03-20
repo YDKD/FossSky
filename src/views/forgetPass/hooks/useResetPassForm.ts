@@ -3,10 +3,10 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 15:54:49
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-20 15:00:19
+ * @LastEditTime: 2022-03-20 14:57:49
  */
 import { computed, reactive, ref } from 'vue'
-import { RegisterForm } from '../types'
+import { ResetPassForm } from '../types'
 import type { FormInstance } from 'element-plus'
 import router from '@/router'
 
@@ -14,10 +14,9 @@ import { ElMessage } from 'element-plus'
 
 // requests
 import { checkExistInfo } from '@/api/getApi'
-import { sendEmailCode, register as registerUser } from '@/api/postApi'
-import { onBeforeRouteLeave } from 'vue-router'
+import { sendEmailCode, resetPass } from '@/api/postApi'
 
-const registerFormRef = ref<FormInstance>()
+const resetPassFormRef = ref<FormInstance>()
 
 const countDown = ref(60)
 let sendEmailStatus = false
@@ -31,34 +30,13 @@ const sendBtnText = computed(() => {
 const emailReg =
   /^[a-zA-Z0-9_-]+@([a-z0-9]+[-a-z0-9]*[a-z0-9]+\.)+(com|cn|net|org)$/
 
-const registerForm: RegisterForm = reactive({
+const resetPassForm: ResetPassForm = reactive({
   account: '',
   password: '',
   confirmPassword: '',
   email: '',
   code: ''
 })
-
-const validateAccount = (rule: any, value: string, callback: any) => {
-  if (value === '') {
-    callback(new Error('请输入用户名密码'))
-  } else {
-    ;(async () => {
-      if (value.length > 10) {
-        return callback('用户名长度不得大于10')
-      }
-      const params = {
-        account: value
-      }
-      const { code, msg } = await checkExistInfo(params)
-      if (code != 200) {
-        callback(msg)
-      } else {
-        callback()
-      }
-    })()
-  }
-}
 
 const validateCommonInfo = (value: string, callback: any, flag: boolean) => {
   let passCheck = true
@@ -90,7 +68,7 @@ const validatePass = (rule: any, value: string, callback: any) => {
 const validateConfirmPass = (rule: any, value: string, callback: any) => {
   const flag = validateCommonInfo(value, callback, false)
   if (flag) {
-    if (value !== registerForm.password) {
+    if (value !== resetPassForm.password) {
       callback('两次密码不一致')
     } else {
       callback()
@@ -110,9 +88,9 @@ const validateEmail = (rule: any, value: string, callback: any) => {
         email: value
       }
       const { code, msg } = await checkExistInfo(params)
-      if (code != 200) {
+      if (code == 200) {
         passCheckValidate.value = false
-        callback(msg)
+        callback('当前邮箱未在系统中进行注册!')
       } else {
         passCheckValidate.value = true
         callback()
@@ -122,12 +100,6 @@ const validateEmail = (rule: any, value: string, callback: any) => {
 }
 
 const registerRules = reactive({
-  account: [
-    {
-      validator: validateAccount,
-      trigger: 'blur'
-    }
-  ],
   password: [
     {
       validator: validatePass,
@@ -159,12 +131,12 @@ const sendEmail = async () => {
   if (sendEmailStatus) {
     return ElMessage.warning(`${countDown.value}秒后重试!`)
   }
-  if (registerForm.email === '') {
+  if (resetPassForm.email === '') {
     ElMessage.warning('请先输入注册邮箱')
   } else {
-    if (emailReg.test(registerForm.email)) {
+    if (emailReg.test(resetPassForm.email)) {
       const data = {
-        email: registerForm.email
+        email: resetPassForm.email
       }
       const { code, msg } = await sendEmailCode(data)
       if (code === 200) {
@@ -196,20 +168,20 @@ const register = async (formEl: FormInstance | undefined) => {
   await formEl.validate(async (valid) => {
     if (valid) {
       const data = {
-        username: registerForm.account,
-        password: registerForm.password,
-        email: registerForm.email,
-        code: registerForm.code
+        password: resetPassForm.password,
+        email: resetPassForm.email,
+        code: resetPassForm.code
       }
-      const { code, msg } = await registerUser(data)
-      resetForm(registerFormRef.value)
+      const { code, msg } = await resetPass(data)
+      resetForm(resetPassFormRef.value)
       if (code === 200) {
         router.push('/login')
         passCheckValidate.value = false
-        ElMessage.success('用户信息注册成功')
+        ElMessage.success('密码重置成功')
       } else {
         ElMessage.error(msg)
       }
+      clearInterval(timer)
     } else {
       return false
     }
@@ -220,14 +192,14 @@ const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.resetFields()
 }
+
 const clearEffect = () => {
   clearInterval(timer)
 }
-
 export {
   registerRules,
-  registerForm,
-  registerFormRef,
+  resetPassForm,
+  resetPassFormRef,
   sendEmail,
   sendBtnText,
   register,

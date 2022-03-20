@@ -3,23 +3,23 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 15:55:57
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-20 15:00:32
+ * @LastEditTime: 2022-03-20 14:58:27
  */
 import {
   registerRules,
-  registerForm,
-  registerFormRef,
+  resetPassForm,
+  resetPassFormRef,
   sendEmail,
   sendBtnText,
   register,
   passCheckValidate,
   clearEffect
-} from './useRegisterForm'
+} from './useResetPassForm'
 
 export {
   registerRules,
-  registerForm,
-  registerFormRef,
+  resetPassForm,
+  resetPassFormRef,
   sendEmail,
   sendBtnText,
   register,

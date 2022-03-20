@@ -1,38 +1,25 @@
+<!--
+ * @Version: 1.0
+ * @Autor: YDKD
+ * @Date: 2022-03-20 11:44:24
+ * @LastEditors: YDKD
+ * @LastEditTime: 2022-03-20 15:00:03
+-->
 <template>
   <div class="register-panel">
-    <foss-bg header-text="注册">
+    <foss-bg header-text="重置密码">
       <template #content>
         <div class="account-register mt-3 text-sm">
           <el-form
-            ref="registerFormRef"
-            :model="registerForm"
+            ref="resetPassFormRef"
+            :model="resetPassForm"
             label-position="left"
             :rules="registerRules"
             class="demo-ruleForm"
           >
-            <el-form-item prop="account">
-              <el-input
-                v-model="registerForm.account"
-                placeholder="请输入用户名"
-              ></el-input>
-            </el-form-item>
-            <el-form-item prop="password">
-              <el-input
-                v-model="registerForm.password"
-                type="password"
-                placeholder="请输入密码"
-              ></el-input>
-            </el-form-item>
-            <el-form-item prop="confirmPassword">
-              <el-input
-                v-model="registerForm.confirmPassword"
-                type="password"
-                placeholder="请输入确认密码"
-              ></el-input>
-            </el-form-item>
             <el-form-item prop="email">
               <el-input
-                v-model="registerForm.email"
+                v-model="resetPassForm.email"
                 type="email"
                 placeholder="请输入邮箱"
               ></el-input>
@@ -40,7 +27,7 @@
             <el-form-item prop="code">
               <div class="flex justify-between">
                 <el-input
-                  v-model="registerForm.code"
+                  v-model="resetPassForm.code"
                   placeholder="邮箱验证码"
                 ></el-input>
                 <el-button
@@ -53,11 +40,25 @@
                 >
               </div>
             </el-form-item>
+            <el-form-item prop="password">
+              <el-input
+                v-model="resetPassForm.password"
+                type="password"
+                placeholder="请输入密码"
+              ></el-input>
+            </el-form-item>
+            <el-form-item prop="confirmPassword">
+              <el-input
+                v-model="resetPassForm.confirmPassword"
+                type="password"
+                placeholder="请输入确认密码"
+              ></el-input>
+            </el-form-item>
           </el-form>
           <el-button
             class="w-full register-btn tracking-widest !bg-orange-500"
-            @click="register(registerFormRef)"
-            >注册</el-button
+            @click="register(resetPassFormRef)"
+            >重置密码</el-button
           >
           <div class="my-3">
             已有账号?<span class="pl-2 jump" @click="startLogin">马上登录</span>
@@ -70,13 +71,14 @@
 
 <script lang="ts" setup>
 import router from '@/router'
-import FossBg from 'components/foss-bg/index.vue'
 import { onBeforeUnmount } from 'vue'
+import FossBg from 'components/foss-bg/index.vue'
+
 // hooks
 import {
   registerRules,
-  registerForm,
-  registerFormRef,
+  resetPassForm,
+  resetPassFormRef,
   sendEmail,
   sendBtnText,
   register,
