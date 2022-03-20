@@ -13,10 +13,12 @@
     "commit": "cz"
   },
   "dependencies": {
+    "@vueuse/core": "^8.1.1",
     "axios": "^0.25.0",
     "element-plus": "^2.1.4",
     "less": "^4.1.2",
     "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
     "pinia": "^2.0.9",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12"
@@ -25,6 +27,7 @@
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@types/node": "^16.11.10",
+    "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "@vitejs/plugin-vue": "^2.0.0",
