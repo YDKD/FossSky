@@ -1,3 +1,4 @@
-import { App } from 'vue'
+import { globalRegister } from './globalRegister'
+import { GLOBAL_USER_SIGN, DEFAULT_REQUEST_LOADING } from './constants'
 
-export default function globalRegister(app: App) {}
+export { globalRegister, GLOBAL_USER_SIGN, DEFAULT_REQUEST_LOADING }

@@ -8,7 +8,7 @@ import './assets/css/tailwind.css'
 import router from './router'
 import { setupStore } from './store'
 
-import globalRegister from './global'
+import { globalRegister } from './global'
 
 import './permission'
 

@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 09:09:51
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-20 10:07:21
+ * @LastEditTime: 2022-03-20 10:37:49
  */
 import { useAppStoreWithOut } from '@/store/modules/app'
 import { isString } from '@/utils/is'
@@ -11,7 +11,6 @@ import { isString } from '@/utils/is'
 const appStore = useAppStoreWithOut()
 
 export const useTitle = (newTitle?: string) => {
-  console.log(appStore.getWebSiteTitle)
   const title = ref(newTitle ?? appStore.getWebSiteTitle)
 
   watch(

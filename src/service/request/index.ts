@@ -5,7 +5,7 @@ import type { FossRequestConfig, FossRequestInterceptor } from './type'
 import { ElLoading } from 'element-plus'
 import { LoadingInstance } from 'element-plus/lib/components/loading/src/loading'
 
-import { DEFAULT_REQUEST_LOADING } from '../constant'
+import { DEFAULT_REQUEST_LOADING } from '@/global'
 
 class FossRequest {
   requestInstance: AxiosInstance
