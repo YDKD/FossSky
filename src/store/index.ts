@@ -1,8 +1,10 @@
 import { createPinia } from 'pinia'
-import { setupUser } from './modules/user'
+import type { App } from 'vue'
 
-export const store = createPinia()
+const store = createPinia()
 
-export function setupStore() {
-  setupUser()
+export const setupStore = (app: App<Element>) => {
+  app.use(store)
 }
+
+export { store }

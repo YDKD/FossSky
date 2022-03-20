@@ -6,17 +6,18 @@ import './assets/css/index.less'
 import './assets/css/tailwind.css'
 
 import router from './router'
-import { store, setupStore } from './store'
+import { setupStore } from './store'
 
 import globalRegister from './global'
+
+import './permission'
+
 const app = createApp(App)
 
 app.use(globalRegister)
 // register router
 app.use(router)
 // register store
-app.use(store)
-// setup store
-setupStore()
+setupStore(app)
 
 app.mount('#app')

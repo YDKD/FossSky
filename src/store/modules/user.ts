@@ -9,7 +9,3 @@ export const useUserStore = defineStore('user', {
     name: 'YDKD'
   })
 })
-
-export function setupUser() {
-  useUserStore()
-}

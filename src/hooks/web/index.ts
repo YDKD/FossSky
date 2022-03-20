@@ -3,5 +3,10 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 08:37:55
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-20 08:37:55
+ * @LastEditTime: 2022-03-20 09:00:37
  */
+
+import { useNProgress } from './useNProgress'
+import { useTitle } from './useTitle'
+
+export { useNProgress, useTitle }
