@@ -9,7 +9,6 @@ declare module 'vue' {
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElInput: typeof import('element-plus/es')['ElInput']
-    Form: typeof import('./../src/components/Form/index.vue')['default']
     FossBg: typeof import('./../src/components/foss-bg/index.vue')['default']
   }
 }
