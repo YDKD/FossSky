@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 11:44:24
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-20 15:00:03
+ * @LastEditTime: 2022-03-21 10:58:20
 -->
 <template>
   <div class="register-panel">
@@ -85,7 +85,6 @@ import {
   passCheckValidate,
   clearEffect
 } from '../hooks/index'
-
 const startLogin = () => {
   router.push({ path: '/login' })
 }

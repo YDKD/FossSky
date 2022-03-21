@@ -3,19 +3,18 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 15:54:49
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-20 15:00:19
+ * @LastEditTime: 2022-03-21 11:49:41
  */
 import { computed, reactive, ref } from 'vue'
 import { RegisterForm } from '../types'
 import type { FormInstance } from 'element-plus'
 import router from '@/router'
-
-import { ElMessage } from 'element-plus'
+import resetForm from '@/utils/resetForm'
 
 // requests
 import { checkExistInfo } from '@/api/getApi'
 import { sendEmailCode, register as registerUser } from '@/api/postApi'
-import { onBeforeRouteLeave } from 'vue-router'
+import useMessage from '@/hooks/web/useMessage'
 
 const registerFormRef = ref<FormInstance>()
 
@@ -157,10 +156,10 @@ const registerRules = reactive({
 
 const sendEmail = async () => {
   if (sendEmailStatus) {
-    return ElMessage.warning(`${countDown.value}秒后重试!`)
+    return useMessage({ type: 'warning', msg: `${countDown.value}秒后重试!` })
   }
   if (registerForm.email === '') {
-    ElMessage.warning('请先输入注册邮箱')
+    useMessage({ type: 'warning', msg: '请先输入注册邮箱' })
   } else {
     if (emailReg.test(registerForm.email)) {
       const data = {
@@ -168,13 +167,13 @@ const sendEmail = async () => {
       }
       const { code, msg } = await sendEmailCode(data)
       if (code === 200) {
-        ElMessage.success(msg)
+        useMessage({ msg: msg })
         handleSendPending()
       } else {
-        ElMessage.error('邮件发送失败！')
+        useMessage({ type: 'error', msg: '邮件发送失败！' })
       }
     } else {
-      ElMessage.error('邮箱格式错误')
+      useMessage({ type: 'error', msg: '邮箱格式错误' })
     }
   }
 }
@@ -206,9 +205,9 @@ const register = async (formEl: FormInstance | undefined) => {
       if (code === 200) {
         router.push('/login')
         passCheckValidate.value = false
-        ElMessage.success('用户信息注册成功')
+        useMessage({ msg: '用户信息注册成功' })
       } else {
-        ElMessage.error(msg)
+        useMessage({ msg: msg, type: 'error' })
       }
     } else {
       return false
@@ -216,12 +215,10 @@ const register = async (formEl: FormInstance | undefined) => {
   })
 }
 
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return
-  formEl.resetFields()
-}
+// clear effect
 const clearEffect = () => {
   clearInterval(timer)
+  resetForm(registerFormRef.value)
 }
 
 export {

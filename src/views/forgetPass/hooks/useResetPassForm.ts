@@ -3,18 +3,18 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 15:54:49
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-20 14:57:49
+ * @LastEditTime: 2022-03-21 11:47:35
  */
 import { computed, reactive, ref } from 'vue'
 import { ResetPassForm } from '../types'
 import type { FormInstance } from 'element-plus'
 import router from '@/router'
-
-import { ElMessage } from 'element-plus'
+import resetForm from '@/utils/resetForm'
 
 // requests
 import { checkExistInfo } from '@/api/getApi'
 import { sendEmailCode, resetPass } from '@/api/postApi'
+import useMessage from '@/hooks/web/useMessage'
 
 const resetPassFormRef = ref<FormInstance>()
 
@@ -129,10 +129,10 @@ const registerRules = reactive({
 
 const sendEmail = async () => {
   if (sendEmailStatus) {
-    return ElMessage.warning(`${countDown.value}秒后重试!`)
+    return useMessage({ type: 'warning', msg: `${countDown.value}秒后重试!` })
   }
   if (resetPassForm.email === '') {
-    ElMessage.warning('请先输入注册邮箱')
+    useMessage({ type: 'warning', msg: '请先输入注册邮箱' })
   } else {
     if (emailReg.test(resetPassForm.email)) {
       const data = {
@@ -140,13 +140,13 @@ const sendEmail = async () => {
       }
       const { code, msg } = await sendEmailCode(data)
       if (code === 200) {
-        ElMessage.success(msg)
+        useMessage({ msg: msg })
         handleSendPending()
       } else {
-        ElMessage.error('邮件发送失败！')
+        useMessage({ type: 'error', msg: '邮件发送失败！' })
       }
     } else {
-      ElMessage.error('邮箱格式错误')
+      useMessage({ type: 'error', msg: '邮箱格式错误' })
     }
   }
 }
@@ -177,9 +177,9 @@ const register = async (formEl: FormInstance | undefined) => {
       if (code === 200) {
         router.push('/login')
         passCheckValidate.value = false
-        ElMessage.success('密码重置成功')
+        useMessage({ msg: '密码重置成功' })
       } else {
-        ElMessage.error(msg)
+        useMessage({ msg: msg, type: 'error' })
       }
       clearInterval(timer)
     } else {
@@ -188,13 +188,10 @@ const register = async (formEl: FormInstance | undefined) => {
   })
 }
 
-const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return
-  formEl.resetFields()
-}
-
 const clearEffect = () => {
   clearInterval(timer)
+  console.log(resetPassFormRef.value)
+  resetForm(resetPassFormRef.value)
 }
 export {
   registerRules,

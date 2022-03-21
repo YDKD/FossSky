@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 11:22:17
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-20 11:43:08
+ * @LastEditTime: 2022-03-21 11:04:49
  */
 import {
   loginFormRef,
@@ -12,7 +12,8 @@ import {
   checked,
   login,
   startRegister,
-  resetPass
+  resetPass,
+  clearEffect
 } from './loginForm'
 
 export {
@@ -22,5 +23,6 @@ export {
   checked,
   login,
   startRegister,
-  resetPass
+  resetPass,
+  clearEffect
 }

@@ -6,19 +6,20 @@
           <el-form
             ref="loginFormRef"
             :model="loginForm"
-            :rules="LoginFormRules"
             label-position="left"
+            :rules="LoginFormRules"
             class="demo-ruleForm"
           >
             <el-form-item prop="account">
               <el-input
                 v-model="loginForm.account"
-                placeholder="用户名/邮箱"
+                placeholder="用户名"
               ></el-input>
             </el-form-item>
             <el-form-item prop="password">
               <el-input
                 v-model="loginForm.password"
+                type="password"
                 placeholder="密码"
               ></el-input>
             </el-form-item>
@@ -49,6 +50,7 @@
 
 <script lang="ts" setup>
 import FossBg from 'components/foss-bg/index.vue'
+import { onBeforeUnmount } from 'vue'
 import {
   loginFormRef,
   loginForm,
@@ -56,8 +58,13 @@ import {
   checked,
   login,
   startRegister,
-  resetPass
+  resetPass,
+  clearEffect
 } from '../hooks'
+
+onBeforeUnmount(() => {
+  clearEffect()
+})
 </script>
 
 <style scoped lang="less">

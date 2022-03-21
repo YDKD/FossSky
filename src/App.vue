@@ -4,18 +4,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { getData } from '@/api/getApi'
-
-const getInitData = async () => {
-  let { returnCode, data, success } = await getData()
-  console.log('returnCode', returnCode)
-  console.log('data', data)
-  console.log('success', success)
-}
-
-// getInitData()
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="less">
 #el-container {
