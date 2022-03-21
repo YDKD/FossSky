@@ -34,7 +34,7 @@
           </div>
           <el-button
             class="w-full login-btn tracking-widest !bg-orange-500"
-            @click="login"
+            @click="login(loginFormRef)"
             >登录</el-button
           >
           <div class="my-3">

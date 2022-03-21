@@ -1,3 +1,4 @@
+import { useCache } from '@/hooks'
 import FossRequest from './request'
 import { BASE_URL, TIMEOUT } from './request/config'
 
@@ -8,9 +9,10 @@ const defaultRequest = new FossRequest({
   interceptors: {
     requestInterceptor: (config) => {
       // 实例Token携带
-      const token = ''
+      const { cookieCache } = useCache('cookie')
+      const token = cookieCache?.getCookie('token')
       if (token) {
-        config.headers!.Authorization = `Bear ${token}`
+        config.headers!.Authorization = `Bearer ${token}`
       }
 
       // console.log('实例请求拦截')

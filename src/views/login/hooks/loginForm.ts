@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 11:22:23
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-21 11:49:34
+ * @LastEditTime: 2022-03-21 16:52:40
  */
 import { reactive, ref } from 'vue'
 import { FormInstance } from 'element-plus'
@@ -12,9 +12,14 @@ import router from '@/router'
 import { login as loginSystem } from '@/api/postApi'
 import resetForm from '@/utils/resetForm'
 import useMessage from '@/hooks/web/useMessage'
+import { useCache } from '@/hooks'
+import { getUser } from '@/api/getApi'
+import { useAppStore } from '@/store/modules/app'
 // 自动登录checked
 const checked = ref(false)
 const loginFormRef = ref<FormInstance>()
+
+const appStore = useAppStore()
 
 const loginForm: LoginForm = reactive({
   account: '',
@@ -39,17 +44,36 @@ const LoginFormRules = reactive({
 })
 
 // login
-const login = async () => {
-  const data = {
-    username: loginForm.account,
-    password: loginForm.password
-  }
-  const { code, msg } = await loginSystem(data)
-  if (code == 200) {
-    // start login
-  } else {
-    useMessage({ msg: msg, type: 'error' })
-  }
+const login = async (formEl: FormInstance | undefined) => {
+  if (!formEl) return
+  await formEl.validate(async (valid) => {
+    if (valid) {
+      const data = {
+        username: loginForm.account,
+        password: loginForm.password
+      }
+      const { code, msg, token } = await loginSystem(data)
+      if (code == 200) {
+        // set token
+        const { cookieCache } = useCache('cookie')
+        cookieCache?.setCookie('token', token)
+
+        // get userInfo
+        await getUserInfo(loginForm.account)
+
+        // go main
+        router.push({ path: '/main' })
+      } else {
+        useMessage({ msg: msg, type: 'error' })
+      }
+    }
+  })
+}
+
+const getUserInfo = async (account: any) => {
+  const userInfo = await getUser(account)
+  const { storageCache } = useCache('storage')
+  storageCache?.set(appStore.userInfo, userInfo)
 }
 
 const startRegister = () => {

@@ -30,3 +30,10 @@ export function checkExistInfo(params: any) {
     params
   })
 }
+
+export function getUser(account: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: `user/info/${account}`,
+    method: 'GET'
+  })
+}
