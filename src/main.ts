@@ -2,6 +2,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 import 'normalize.css'
+
+// import global css
+import '@/styles/index.less'
+
 import './assets/css/index.less'
 import './assets/css/tailwind.css'
 

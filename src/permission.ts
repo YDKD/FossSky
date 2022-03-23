@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 08:41:57
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 14:51:14
+ * @LastEditTime: 2022-03-23 15:00:34
  */
 import { getRoutes } from './api/getApi'
 import { useNProgress, useTitle, useCache } from './hooks'
@@ -35,6 +35,8 @@ router.beforeEach(async (to, from, next) => {
       }
       // get routes
       const { data } = await getRoutes()
+
+      // generate routes
       const payload = formatTree(data)
       const routes = generateRouter(payload)
 

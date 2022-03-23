@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-23 11:00:44
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 14:50:26
+ * @LastEditTime: 2022-03-23 15:01:54
  */
 import Menu from '@/components/menu/index.vue'
 import { RouteRecordRaw } from 'vue-router'
@@ -52,7 +52,6 @@ export const formatTree = (data: Array<RouteItem>) => {
 }
 
 // 路由转换
-
 export const generateRouter = (userRouters: any): RouteRecordRaw[] => {
   const newRoutes = userRouters.map((r: any) => {
     let routes: RouteRecordRaw

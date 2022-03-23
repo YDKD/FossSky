@@ -12,6 +12,14 @@ export default defineConfig(({ command, mode }) => {
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', 'md']
     },
     server: server,
-    plugins: [...setupPlugins()]
+    plugins: [...setupPlugins()],
+    css: {
+      preprocessorOptions: {
+        less: {
+          additionalData: '@import "./src/styles/variables.module.less";',
+          javascriptEnabled: true
+        }
+      }
+    }
   }
 })
