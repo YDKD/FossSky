@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 15:55:57
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-19 20:13:42
+ * @LastEditTime: 2022-03-20 15:00:32
  */
 import {
   registerRules,
@@ -12,7 +12,8 @@ import {
   sendEmail,
   sendBtnText,
   register,
-  passCheckValidate
+  passCheckValidate,
+  clearEffect
 } from './useRegisterForm'
 
 export {
@@ -22,5 +23,6 @@ export {
   sendEmail,
   sendBtnText,
   register,
-  passCheckValidate
+  passCheckValidate,
+  clearEffect
 }

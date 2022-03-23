@@ -22,7 +22,8 @@
         "src/components/*"
       ],
     },
-    "types": ["element-plus/global"]
+    "types": ["element-plus/global", "vite/client"],
+    "typeRoots": ["./types"]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite/utils/generateEnv.ts"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite/utils/generateEnv.ts", "types/**/*.d.ts"]
 }

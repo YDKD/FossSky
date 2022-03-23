@@ -23,10 +23,24 @@ export function getData(params?: any) {
     })
 }
 
-export function checkExitInfo(params: any) {
+export function checkExistInfo(params: any) {
   return defaultRequest.request<ReutrnDataType>({
-    url: '/user/exit',
+    url: '/user/exist',
     method: 'GET',
     params
+  })
+}
+
+export function getUser(account: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: `/user/info/${account}`,
+    method: 'GET'
+  })
+}
+
+export function getRoutes() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/user/routes',
+    method: 'GET'
   })
 }

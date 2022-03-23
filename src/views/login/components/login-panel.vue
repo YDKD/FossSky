@@ -1,24 +1,25 @@
 <template>
-  <div class="login-panel">
+  <div :class="prefixCls">
     <foss-bg header-text="登录">
       <template #content>
         <div class="account-login mt-3 text-sm">
           <el-form
             ref="loginFormRef"
             :model="loginForm"
-            :rules="rules"
             label-position="left"
+            :rules="LoginFormRules"
             class="demo-ruleForm"
           >
             <el-form-item prop="account">
               <el-input
                 v-model="loginForm.account"
-                placeholder="用户名/邮箱"
+                placeholder="用户名"
               ></el-input>
             </el-form-item>
             <el-form-item prop="password">
               <el-input
                 v-model="loginForm.password"
+                type="password"
                 placeholder="密码"
               ></el-input>
             </el-form-item>
@@ -29,11 +30,11 @@
               label="下次自动登录"
               class="text-sm"
             ></el-checkbox>
-            <span class="jump">忘记密码</span>
+            <span class="jump" @click="resetPass">忘记密码</span>
           </div>
           <el-button
             class="w-full login-btn tracking-widest !bg-orange-500"
-            @click="login"
+            @click="login(loginFormRef)"
             >登录</el-button
           >
           <div class="my-3">
@@ -48,50 +49,31 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
-import type { ElForm } from 'element-plus'
-import { LoginForm } from '../types'
-import router from '@/router'
+import { useDesign } from '@/hooks'
 import FossBg from 'components/foss-bg/index.vue'
+import { onBeforeUnmount } from 'vue'
+import {
+  loginFormRef,
+  loginForm,
+  LoginFormRules,
+  checked,
+  login,
+  startRegister,
+  resetPass,
+  clearEffect
+} from '../hooks'
 
-type FormInstance = InstanceType<typeof ElForm>
+const prefixCls = useDesign('prefix', 'login-panel')
 
-// 自动登录checked
-let checked = ref(false)
-const loginFormRef = ref<FormInstance>()
-
-const loginForm: LoginForm = reactive({
-  account: '',
-  password: ''
+onBeforeUnmount(() => {
+  clearEffect()
 })
-
-const rules = reactive({
-  account: [
-    {
-      required: true,
-      message: '请输入用户名/邮箱',
-      trigger: 'blur'
-    }
-  ],
-  password: [
-    {
-      required: true,
-      message: '请输入密码',
-      trigger: 'blur'
-    }
-  ]
-})
-
-// login
-const login = () => {}
-
-const startRegister = () => {
-  router.push({ path: '/register' })
-}
 </script>
 
 <style scoped lang="less">
-.login-panel {
+@prefix-cls: ~'@{namespace}-login-panel';
+
+.@{prefix-cls} {
   .account-login {
     font-size: 12px;
     .login-btn {
