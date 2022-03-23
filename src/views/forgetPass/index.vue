@@ -1,15 +1,20 @@
 <template>
-  <div class="forgetPass">
+  <div :class="prefixCls">
     <reset-pass-panel />
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useDesign } from '@/hooks'
 import resetPassPanel from './components/resetpass-panel.vue'
+
+const prefixCls = useDesign('prefix', 'forget-pass')
 </script>
 
 <style scoped lang="less">
-.forgetPass {
+@prefix-cls: ~'@{namespace}-forget-pass';
+
+.@{prefix-cls} {
   width: 100%;
   height: 100%;
   display: flex;

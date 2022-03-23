@@ -3,11 +3,13 @@
  * @Autor: YDKD
  * @Date: 2022-03-23 16:46:13
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 16:46:14
+ * @LastEditTime: 2022-03-23 17:02:13
  */
 import variables from '@/styles/variables.module.less'
 
-export const useDesign = () => {
+type Type = 'prefix' | 'variables'
+
+export const useDesign = (type: Type = 'prefix', componentScope?: string) => {
   const lessVariables = variables
 
   /**
@@ -17,9 +19,9 @@ export const useDesign = () => {
   const getPrefixCls = (scope: string) => {
     return `${lessVariables.namespace}-${scope}`
   }
-
-  return {
-    variables: lessVariables,
-    getPrefixCls
+  if (type == 'prefix') {
+    return getPrefixCls(componentScope!)
+  } else {
+    return lessVariables
   }
 }

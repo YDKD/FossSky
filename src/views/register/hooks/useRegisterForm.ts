@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 15:54:49
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-21 13:39:17
+ * @LastEditTime: 2022-03-23 17:08:45
  */
 import { computed, reactive, ref } from 'vue'
 import { RegisterForm } from '../types'
@@ -14,7 +14,7 @@ import resetForm from '@/utils/resetForm'
 // requests
 import { checkExistInfo } from '@/api/getApi'
 import { sendEmailCode, register as registerUser } from '@/api/postApi'
-import useMessage from '@/hooks/web/useMessage'
+import { useMessage } from '@/hooks'
 
 const registerFormRef = ref<FormInstance>()
 

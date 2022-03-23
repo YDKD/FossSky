@@ -1,5 +1,5 @@
 <template>
-  <div class="login-panel">
+  <div :class="prefixCls">
     <foss-bg header-text="登录">
       <template #content>
         <div class="account-login mt-3 text-sm">
@@ -49,6 +49,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useDesign } from '@/hooks'
 import FossBg from 'components/foss-bg/index.vue'
 import { onBeforeUnmount } from 'vue'
 import {
@@ -62,13 +63,17 @@ import {
   clearEffect
 } from '../hooks'
 
+const prefixCls = useDesign('prefix', 'login-panel')
+
 onBeforeUnmount(() => {
   clearEffect()
 })
 </script>
 
 <style scoped lang="less">
-.login-panel {
+@prefix-cls: ~'@{namespace}-login-panel';
+
+.@{prefix-cls} {
   .account-login {
     font-size: 12px;
     .login-btn {

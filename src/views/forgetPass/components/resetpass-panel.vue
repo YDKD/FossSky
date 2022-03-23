@@ -3,10 +3,10 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 11:44:24
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-21 10:58:20
+ * @LastEditTime: 2022-03-23 17:31:40
 -->
 <template>
-  <div class="register-panel">
+  <div :class="prefixCls">
     <foss-bg header-text="重置密码">
       <template #content>
         <div class="account-register mt-3 text-sm">
@@ -85,9 +85,12 @@ import {
   passCheckValidate,
   clearEffect
 } from '../hooks/index'
+import { useDesign } from '@/hooks'
 const startLogin = () => {
   router.push({ path: '/login' })
 }
+
+const prefixCls = useDesign('prefix', 'forget-pass-panel')
 
 onBeforeUnmount(() => {
   clearEffect()
@@ -95,7 +98,9 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped lang="less">
-.register-panel {
+@prefix-cls: ~'@{namespace}-forget-pass-panel';
+
+.@{prefix-cls} {
   .account-register {
     font-size: 12px;
     .register-btn {

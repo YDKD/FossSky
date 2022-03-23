@@ -14,11 +14,11 @@ type ElMessageType = {
   closeable?: boolean
 }
 
-export default function useMessage({
+export const useMessage = ({
   msg,
   type = 'success',
   duration = 2000,
   closeable = false
-}: ElMessageType) {
+}: ElMessageType) => {
   ElMessage[type]({ duration: duration, message: msg, showClose: closeable })
 }

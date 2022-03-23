@@ -1,5 +1,5 @@
 <template>
-  <div class="register-panel">
+  <div :class="prefixCls">
     <foss-bg header-text="注册">
       <template #content>
         <div class="account-register mt-3 text-sm">
@@ -69,6 +69,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useDesign } from '@/hooks'
 import router from '@/router'
 import FossBg from 'components/foss-bg/index.vue'
 import { onBeforeUnmount } from 'vue'
@@ -88,13 +89,17 @@ const startLogin = () => {
   router.push({ path: '/login' })
 }
 
+const prefixCls = useDesign('prefix', 'register-panel')
+
 onBeforeUnmount(() => {
   clearEffect()
 })
 </script>
 
 <style scoped lang="less">
-.register-panel {
+@prefix-cls: ~'@{namespace}-register-panel';
+
+.@{prefix-cls} {
   .account-register {
     font-size: 12px;
     .register-btn {

@@ -1,15 +1,20 @@
 <template>
-  <div class="login">
+  <div :class="prefixCls">
     <login-panel />
   </div>
 </template>
 
 <script lang="ts" setup>
 import loginPanel from './components/login-panel.vue'
+import { useDesign } from '@/hooks'
+
+const prefixCls = useDesign('prefix', 'login')
 </script>
 
 <style scoped lang="less">
-.login {
+@prefix-cls: ~'@{namespace}-login';
+
+.@{prefix-cls} {
   width: 100%;
   height: 100%;
   display: flex;

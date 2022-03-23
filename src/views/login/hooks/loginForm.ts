@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 11:22:23
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 16:29:19
+ * @LastEditTime: 2022-03-23 17:08:34
  */
 import { reactive, ref } from 'vue'
 import { FormInstance } from 'element-plus'
@@ -11,7 +11,7 @@ import { LoginForm } from '../types'
 import router from '@/router'
 import { login as loginSystem } from '@/api/postApi'
 import resetForm from '@/utils/resetForm'
-import useMessage from '@/hooks/web/useMessage'
+import { useMessage } from '@/hooks'
 import { useCache } from '@/hooks'
 import { getUser } from '@/api/getApi'
 import { useAppStore } from '@/store/modules/app'
