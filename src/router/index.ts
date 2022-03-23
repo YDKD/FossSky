@@ -25,10 +25,6 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: '重置密码'
     }
-  },
-  {
-    path: '/main',
-    component: () => import('@/views/main/main.vue')
   }
 ]
 

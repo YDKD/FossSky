@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 11:22:23
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-21 16:52:40
+ * @LastEditTime: 2022-03-23 14:27:29
  */
 import { reactive, ref } from 'vue'
 import { FormInstance } from 'element-plus'
@@ -22,8 +22,8 @@ const loginFormRef = ref<FormInstance>()
 const appStore = useAppStore()
 
 const loginForm: LoginForm = reactive({
-  account: '',
-  password: ''
+  account: 'YDKD',
+  password: '123456a'
 })
 
 const LoginFormRules = reactive({

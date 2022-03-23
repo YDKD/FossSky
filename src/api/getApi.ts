@@ -33,7 +33,14 @@ export function checkExistInfo(params: any) {
 
 export function getUser(account: any) {
   return defaultRequest.request<ReutrnDataType>({
-    url: `user/info/${account}`,
+    url: `/user/info/${account}`,
+    method: 'GET'
+  })
+}
+
+export function getRoutes() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/user/routes',
     method: 'GET'
   })
 }
