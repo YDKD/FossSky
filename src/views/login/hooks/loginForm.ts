@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 11:22:23
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 17:08:34
+ * @LastEditTime: 2022-03-24 14:18:34
  */
 import { reactive, ref } from 'vue'
 import { FormInstance } from 'element-plus'
@@ -62,7 +62,7 @@ const login = async (formEl: FormInstance | undefined) => {
         await getUserInfo(loginForm.account)
 
         // go main
-        router.push({ path: '/dashboard' })
+        router.push({ path: '/dashboard/analysis' })
       } else {
         useMessage({ msg: msg, type: 'error' })
       }

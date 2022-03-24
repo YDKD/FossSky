@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 11:44:24
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 17:31:40
+ * @LastEditTime: 2022-03-24 15:27:01
 -->
 <template>
   <div :class="prefixCls">
@@ -66,6 +66,7 @@
         </div>
       </template>
     </foss-bg>
+    <router-view></router-view>
   </div>
 </template>
 

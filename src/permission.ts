@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 08:41:57
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 15:00:34
+ * @LastEditTime: 2022-03-24 15:45:05
  */
 import { getRoutes } from './api/getApi'
 import { useNProgress, useTitle, useCache } from './hooks'
@@ -20,7 +20,7 @@ const permissionStore = usePermissionStoreWithOut()
 
 const { storageCache } = useCache()
 
-const whiteRouteList = ['/login', '/register', '/reset-pass']
+const whiteRouteList = ['/login', '/register', '/reset-pass', '/test']
 
 router.beforeEach(async (to, from, next) => {
   start()
