@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-23 11:00:44
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-24 15:44:36
+ * @LastEditTime: 2022-03-24 15:52:26
  */
 import Menu from '@/components/menu/index.vue'
 import { RouteMeta, RouteRecordRaw } from 'vue-router'
@@ -11,7 +11,7 @@ import { RouteMeta, RouteRecordRaw } from 'vue-router'
 // to dynamic import component
 const modules = import.meta.glob('../views/**/*.{vue,tsx}')
 
-import Layout from '@/views/layout/index.vue'
+import Layout from '@/layout/index.vue'
 
 export const formatTree = (data: Array<RouteItem>) => {
   const parents = data.filter((p) => p.pid == 0),

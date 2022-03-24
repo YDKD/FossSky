@@ -14,8 +14,8 @@ declare module 'vue' {
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
     FossBg: typeof import('./../src/components/foss-bg/index.vue')['default']
+    LogoSrcLogo: typeof import('./../src/components/Logo/src/Logo.vue')['default']
     Menu: typeof import('./../src/components/menu/index.vue')['default']
-    TabMenu: typeof import('./../src/components/TabMenu/index.vue')['default']
     TabMenuSrcTabMenu: typeof import('./../src/components/TabMenu/src/TabMenu.vue')['default']
   }
 }

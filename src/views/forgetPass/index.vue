@@ -20,7 +20,7 @@ const prefixCls = useDesign('prefix', 'forget-pass')
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../../assets/img/bg.jpg');
+  background-image: url('../../assets/imgs/bg.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
