@@ -1,5 +1,5 @@
 <template>
-  <div class="foss-bg mb-32 p-5 rounded">
+  <div :class="[prefixCls, 'mb-32', 'p-5', 'rounded', 'text-orange-500']">
     <!-- label -->
     <h1
       class="text-center pb-2 text-orange-500 border-b border-b-orange-500 font-bold text-xl tracking-widest"
@@ -11,7 +11,11 @@
 </template>
 
 <script lang="ts" setup>
+import { useDesign } from '@/hooks'
 import { defineProps, withDefaults } from 'vue'
+
+const prefixCls = useDesign('prefix', 'bg-panel')
+
 interface Props {
   headerText?: string
 }
@@ -22,7 +26,9 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <style scoped lang="less">
-.foss-bg {
+@prefix-cls: ~'@{namespace}-bg-panel';
+
+.@{prefix-cls} {
   width: 320px;
   height: 400px;
   background-color: #fff;

@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 08:37:55
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-24 10:35:17
+ * @LastEditTime: 2022-03-25 14:16:12
  */
 
 import { useNProgress } from './web/useNProgress'
@@ -13,5 +13,14 @@ import { useDesign } from './web/useDesign'
 
 import { useCache } from './tools/useCache'
 import { useEmitter } from './tools/useEmitter'
+import { useClear } from './tools/useClear'
 
-export { useNProgress, useTitle, useCache, useDesign, useMessage, useEmitter }
+export {
+  useNProgress,
+  useTitle,
+  useCache,
+  useDesign,
+  useMessage,
+  useEmitter,
+  useClear
+}

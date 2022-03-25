@@ -3,20 +3,25 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 16:04:05
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-24 17:43:34
+ * @LastEditTime: 2022-03-25 11:00:09
 -->
 <template>
   <div :class="prefixCls">
     <div
       :class="[
-        '!h-[var(--logo-height)] flex items-center cursor-pointer pl-3 pt-2'
+        '!h-[var(--logo-height)] flex items-center justify-center cursor-pointer pl-3 pt-2'
       ]"
     >
       <img
         src="@/assets/imgs/logo.png"
         class="w-[calc(var(--logo-height)-10px)] h-[calc(var(--logo-height)-10px)]"
       />
-      <span class="pl-3">{{ title }}</span>
+      <span
+        :class="[
+          'pl-3 text-base font-bold text-[var(--logo-title-text-color)]'
+        ]"
+        >{{ title }}</span
+      >
     </div>
   </div>
 </template>
