@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-21 11:35:02
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-21 11:44:42
+ * @LastEditTime: 2022-03-25 09:46:35
  */
 import { ElMessage } from 'element-plus'
 type TipsType = 'success' | 'warning' | 'info' | 'error'
