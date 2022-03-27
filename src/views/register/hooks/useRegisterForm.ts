@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 15:54:49
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 17:08:45
+ * @LastEditTime: 2022-03-27 11:03:43
  */
 import { computed, reactive, ref } from 'vue'
 import { RegisterForm } from '../types'
@@ -218,6 +218,7 @@ const register = async (formEl: FormInstance | undefined) => {
 // clear effect
 const clearEffect = () => {
   clearInterval(timer)
+  countDown.value = 60
   resetForm(registerFormRef.value)
 }
 

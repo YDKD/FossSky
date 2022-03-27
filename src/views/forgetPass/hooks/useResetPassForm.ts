@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 15:54:49
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 17:08:20
+ * @LastEditTime: 2022-03-27 11:02:45
  */
 import { computed, reactive, ref } from 'vue'
 import { ResetPassForm } from '../types'
@@ -190,7 +190,7 @@ const register = async (formEl: FormInstance | undefined) => {
 
 const clearEffect = () => {
   clearInterval(timer)
-  console.log(resetPassFormRef.value)
+  countDown.value = 60
   resetForm(resetPassFormRef.value)
 }
 export {
