@@ -31,6 +31,8 @@
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
+    "@iconify/json": "^2.1.21",
+    "@purge-icons/generated": "^0.8.1",
     "@types/lodash": "^4.14.179",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^16.11.10",
@@ -58,6 +60,7 @@
     "unplugin-element-plus": "^0.2.0",
     "unplugin-vue-components": "^0.17.18",
     "vite": "^2.8.6",
+    "vite-plugin-purge-icons": "^0.8.1",
     "vue-eslint-parser": "^8.1.0",
     "vue-tsc": "^0.29.8"
   },
