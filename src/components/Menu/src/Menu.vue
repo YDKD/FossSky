@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 10:19:48
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-28 17:18:57
+ * @LastEditTime: 2022-03-28 17:36:51
 -->
 <script lang="tsx">
 import { defineComponent, computed, unref } from 'vue'
@@ -43,7 +43,7 @@ export default defineComponent({
       <div class={[prefixCls, 'h-full overflow-hidden flex-col text-white']}>
         <ElScrollbar>
           <ElMenu
-            defaultActive="1"
+            defaultActive={unref(activeMenu)}
             collapse={collapse}
             backgroundColor="var(--left-menu-bg-color)"
             textColor="var(--left-menu-text-color)"
