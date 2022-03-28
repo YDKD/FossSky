@@ -15,12 +15,14 @@ declare module 'vue' {
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElHeader: typeof import('element-plus/es')['ElHeader']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
     FossBg: typeof import('./../src/components/foss-bg/index.vue')['default']
     HeaderSrcHeader: typeof import('./../src/components/Header/src/Header.vue')['default']
+    IconSrcIcon: typeof import('./../src/components/Icon/src/Icon.vue')['default']
     LogoSrcLogo: typeof import('./../src/components/Logo/src/Logo.vue')['default']
-    Menu: typeof import('./../src/components/menu/index.vue')['default']
+    MenuSrcMenu: typeof import('./../src/components/Menu/src/Menu.vue')['default']
     TabMenuSrcTabMenu: typeof import('./../src/components/TabMenu/src/TabMenu.vue')['default']
   }
 }

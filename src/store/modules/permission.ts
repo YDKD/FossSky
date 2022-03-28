@@ -3,29 +3,28 @@
  * @Autor: YDKD
  * @Date: 2022-03-21 14:00:16
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-25 09:48:57
+ * @LastEditTime: 2022-03-28 17:26:27
  */
 import { store } from '../index'
-import type { RouteRecordRaw } from 'vue-router'
 
 export interface PermissionState {
-  routers: RouteRecordRaw[]
+  routers: CustomRouteRecordRaw[]
   hasRoutes: boolean
 }
 
-export const usePermission = defineStore({
+export const usePermissionStore = defineStore({
   id: 'permission',
   state: (): PermissionState => ({
     routers: [],
     hasRoutes: false
   }),
   getters: {
-    getRouters(): RouteRecordRaw[] {
+    getRouters(): CustomRouteRecordRaw[] {
       return this.routers
     }
   },
   actions: {
-    addRoutes(state: RouteRecordRaw[]): void {
+    addRoutes(state: CustomRouteRecordRaw[]): void {
       this.routers = state
     },
     setIsAddRouters(state: boolean): void {
@@ -35,5 +34,5 @@ export const usePermission = defineStore({
 })
 
 export const usePermissionStoreWithOut = () => {
-  return usePermission(store)
+  return usePermissionStore(store)
 }

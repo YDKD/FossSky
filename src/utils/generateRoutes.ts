@@ -3,10 +3,8 @@
  * @Autor: YDKD
  * @Date: 2022-03-23 11:00:44
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-24 15:52:26
+ * @LastEditTime: 2022-03-28 17:28:25
  */
-import Menu from '@/components/menu/index.vue'
-import { RouteMeta, RouteRecordRaw } from 'vue-router'
 
 // to dynamic import component
 const modules = import.meta.glob('../views/**/*.{vue,tsx}')
@@ -51,7 +49,8 @@ export const generateRouter = (
       path: r.path,
       name: r.name,
       component: r.pid == 0 ? Layout : modules[`../views/${r.name}/index.vue`],
-      meta: { title: r.title, icon: r.ico }
+      meta: { title: r.title, icon: r.ico },
+      fullPath: r.fullPath
     }
     if (r.children) {
       _routes.children = generateRouter(r.children)

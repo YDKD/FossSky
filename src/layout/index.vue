@@ -6,6 +6,7 @@ import { useAppStore } from '@/store/modules/app'
 // layout
 import { Logo } from '@/components/Logo'
 import { Header } from '@/components/Header'
+import { Menu } from '@/components/Menu'
 
 const prefixCls = useDesign('prefix', 'container')
 
@@ -18,10 +19,14 @@ export default defineComponent({
       <div class={prefixCls}>
         <el-container class={['h-full']}>
           <el-aside width="200px" class={['aside-bg h-full']}>
+            {/* Logo part */}
             <Logo />
+            {/* Menu part */}
+            <Menu class="!h-[calc(100%-var(--logo-height))]" />
           </el-aside>
           <el-container>
-            <el-header>
+            <el-header class="!h-[var(--logo-height)]">
+              {/* Header part */}
               <Header />
             </el-header>
             <el-main class={['container-bg']}>

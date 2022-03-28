@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@commitlint/cli': ^16.1.0
   '@commitlint/config-conventional': ^16.0.0
+  '@iconify/iconify': ^2.2.0
   '@iconify/json': ^2.1.21
   '@purge-icons/generated': ^0.8.1
   '@types/lodash': ^4.14.179
@@ -51,6 +52,7 @@ specifiers:
   web-storage-cache: ^1.1.1
 
 dependencies:
+  '@iconify/iconify': 2.2.0
   '@vueuse/core': 8.2.0_vue@3.2.31
   axios: 0.25.0
   element-plus: 2.1.6_1a412d14def5ff5ca1122000e4bee666
@@ -663,7 +665,6 @@ packages:
 
   /@iconify/iconify/2.2.0:
     resolution: {integrity: sha512-dqb0Y3e7kU5a0EolmOEY7PPtLec08MfJagVmyeMFJ6sk4Dp8wyvr64aWVxBpCvMqQXtbqSN87XNgJnOfcE6trQ==}
-    dev: true
 
   /@iconify/json/2.1.21:
     resolution: {integrity: sha512-xaf916kxsau+yQv7rnnAvGQEsCbx2+zHNL/13BAgIm6+SbMjGfvrRHpufdkfTV8GnEHjyl3vsFc3MPkZ1lI2Rw==}

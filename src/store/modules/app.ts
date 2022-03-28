@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 09:18:18
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-25 11:15:37
+ * @LastEditTime: 2022-03-28 11:03:03
  */
 import { appGlobalModules } from '@/config'
 import type { AppState } from '@/config'
@@ -16,6 +16,9 @@ export const useAppStore = defineStore({
   getters: {
     getWebSiteTitle(): string {
       return this.webSiteTitle
+    },
+    getCollapse(): boolean {
+      return this.collapse
     }
   }
 })

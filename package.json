@@ -13,6 +13,7 @@
     "commit": "cz"
   },
   "dependencies": {
+    "@iconify/iconify": "^2.2.0",
     "@vueuse/core": "^8.1.1",
     "axios": "^0.25.0",
     "element-plus": "^2.1.4",
