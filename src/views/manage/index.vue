@@ -3,14 +3,46 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 14:17:43
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-24 14:17:44
+ * @LastEditTime: 2022-03-29 16:49:54
 -->
 <template>
-  <div>
-    <h2>我是person</h2>
+  <div :class="prefixCls">
+    <el-card class="box-card !rounded-2xl">
+      <template #header>
+        <div class="card-header">
+          <span>人员管理</span>
+
+          <el-tooltip content="添加人员" effect="customized">
+            <icon-src-icon
+              icon="user-plus"
+              class="cursor-pointer"
+              color="var(--add-button)"
+              :size="16"
+            ></icon-src-icon>
+          </el-tooltip>
+        </div>
+      </template>
+      <div v-for="o in 4" :key="o" class="text item">
+        {{ 'List item ' + o }}
+      </div>
+    </el-card>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useDesign } from '@/hooks'
 
-<style lang="less" scoped></style>
+const prefixCls = useDesign('prefix', 'person-manage')
+</script>
+
+<style lang="less" scoped>
+@prefix-cls: ~'@{namespace}-person-manage';
+
+.@{prefix-cls} {
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+</style>

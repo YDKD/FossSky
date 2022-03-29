@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 15:08:36
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-28 17:08:29
+ * @LastEditTime: 2022-03-29 16:34:03
 -->
 <template>
   <ElIcon :class="prefixCls" :size="size" :color="color">
@@ -25,8 +25,8 @@ const props = defineProps({
     type: String
   },
   size: {
-    type: String,
-    default: () => '16'
+    type: Number,
+    default: () => 16
   }
 })
 </script>
