@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 14:17:43
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-29 16:49:54
+ * @LastEditTime: 2022-03-30 15:02:06
 -->
 <template>
   <div :class="prefixCls">
@@ -30,9 +30,16 @@
 </template>
 
 <script lang="ts" setup>
+import { getPersonList } from '@/api/getApi'
 import { useDesign } from '@/hooks'
 
 const prefixCls = useDesign('prefix', 'person-manage')
+
+const getInitData = async () => {
+  await getPersonList()
+}
+
+getInitData()
 </script>
 
 <style lang="less" scoped>
