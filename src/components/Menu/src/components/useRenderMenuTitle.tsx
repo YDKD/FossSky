@@ -10,7 +10,7 @@ import { RouteMeta } from 'vue-router'
 
 export const useRenderMenuTitle = () => {
   const renderMenuTitle = (meta?: RouteMeta) => {
-    const icon = (meta?.icon)?.split('-')[1]
+    const icon = meta?.icon?.split('-')[1]
     return (
       <>
         <Icon icon={icon}></Icon>

@@ -3,11 +3,16 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 15:08:36
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-29 16:34:03
+ * @LastEditTime: 2022-03-30 16:55:06
 -->
 <template>
   <ElIcon :class="prefixCls" :size="size" :color="color">
-    <span class="iconify" :data-icon="[`fa:${icon}`]"></span>
+    <span
+      v-if="type == 'iconify'"
+      class="iconify"
+      :data-icon="[`fa:${icon}`]"
+    ></span>
+    <i v-else :class="['iconfont', icon]"></i>
   </ElIcon>
 </template>
 
@@ -27,6 +32,10 @@ const props = defineProps({
   size: {
     type: Number,
     default: () => 16
+  },
+  type: {
+    type: String,
+    default: () => 'iconify'
   }
 })
 </script>
