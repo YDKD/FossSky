@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 15:08:36
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-30 16:55:06
+ * @LastEditTime: 2022-03-30 19:47:30
 -->
 <template>
   <ElIcon :class="prefixCls" :size="size" :color="color">
@@ -41,8 +41,11 @@ const props = defineProps({
 </script>
 
 <style lang="less" scoped>
-@prefix-cls: ~'@{namespace}-';
+@prefix-cls: ~'@{namespace}-icon';
 
 .@{prefix-cls} {
+  .iconfont {
+    font-size: 2.4rem;
+  }
 }
 </style>

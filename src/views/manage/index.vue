@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 14:17:43
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-30 16:51:23
+ * @LastEditTime: 2022-03-30 21:01:39
 -->
 <template>
   <div :class="prefixCls">
@@ -33,14 +33,18 @@
         </el-table-column>
         <el-table-column label="性别" width="80">
           <template #default="{ row }">
-            <icon-src-icon type="iconfont" :icon="formatGender(row)" />
+            <icon-src-icon
+              type="iconfont"
+              :size="40"
+              :icon="formatGender(row)"
+            />
           </template>
         </el-table-column>
-        <el-table-column label="在职情况" width="100">
+        <el-table-column label="在职情况" width="100" class-name="custom-cell">
           <template #default="{ row }">
             <icon-src-icon
               type="iconfont"
-              :size="20"
+              :size="40"
               :icon="formatWorkStatus(row)"
             />
           </template>
@@ -108,6 +112,9 @@ getInitData()
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .custom-cell {
+    height: 100%;
   }
 }
 </style>

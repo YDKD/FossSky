@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { defineComponent } from 'vue'
+import { defineComponent, Transition } from 'vue'
 import { useDesign } from '@/hooks'
 import { useAppStore } from '@/store/modules/app'
 
@@ -7,6 +7,8 @@ import { useAppStore } from '@/store/modules/app'
 import { Logo } from '@/components/Logo'
 import { Header } from '@/components/Header'
 import { Menu } from '@/components/Menu'
+import AppView from './AppView.vue'
+import { RouterView } from 'vue-router'
 
 const prefixCls = useDesign('prefix', 'container')
 
@@ -30,7 +32,7 @@ export default defineComponent({
               <Header />
             </el-header>
             <el-main class={['container-bg']}>
-              <router-view></router-view>
+              <AppView />
             </el-main>
           </el-container>
         </el-container>
