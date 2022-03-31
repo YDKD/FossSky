@@ -3,6 +3,8 @@ import App from './App.vue'
 
 import 'normalize.css'
 
+import '@purge-icons/generated'
+
 // import global css
 import '@/styles/index.less'
 

@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-20 10:19:25
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-21 16:52:12
+ * @LastEditTime: 2022-03-25 14:15:23
  */
 // class
 import webCache from 'web-storage-cache'
@@ -15,18 +15,22 @@ type CacheType = 'storage' | 'cookie'
 interface CookiseType {
   setCookie: (key: string, value: string, time?: number | Date) => void
   getCookie: (param: string) => string | undefined
+  clearCookie: () => void
 }
 
 const cookieCache: CookiseType = Cookise
 
-export const useCache = (cacheType: CacheType = 'storage') => {
+export const useCache = (
+  cacheType: CacheType = 'storage',
+  storageType?: StorageType
+) => {
   if (cacheType == 'storage') {
-    const storage = (storageType: StorageType = 'sessionStorage'): webCache => {
+    const storage = (type: StorageType = 'sessionStorage'): webCache => {
       return new webCache({
-        storage: storageType
+        storage: type
       })
     }
-    const storageCache = storage()
+    const storageCache = storage(storageType)
     // the reason is to for future expansion why export the object not use defalut
     return {
       storageCache

@@ -40,8 +40,8 @@ module.exports = {
       'error',
       {
         html: {
-          void: 'never',
-          normal: 'any',
+          void: 'always',
+          normal: 'never',
           component: 'any'
         },
         svg: 'always',

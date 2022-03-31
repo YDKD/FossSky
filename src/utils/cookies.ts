@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-21 15:44:02
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-21 16:24:44
+ * @LastEditTime: 2022-03-25 14:18:57
  */
 /**
  *
@@ -17,6 +17,7 @@
  */
 
 const defaultTime = 86400000
+const storageKeys: string[] = reactive([])
 //设置cookie
 function setCookie(key: string, value: string, time?: number | Date) {
   let invalid = new Date()
@@ -34,6 +35,8 @@ function setCookie(key: string, value: string, time?: number | Date) {
   //字符串拼接cookie
   window.document.cookie =
     key + '=' + value + ';path=/;expires=' + invalid.toUTCString()
+  // save keys
+  storageKeys.push(key)
 }
 
 //读取cookie
@@ -53,7 +56,15 @@ function getCookie(param: string): string | undefined {
   }
 }
 
+// 清空Cookies
+function clearCookie() {
+  storageKeys.forEach((key) => {
+    setCookie(key, '0', new Date())
+  })
+}
+
 export default {
   getCookie,
-  setCookie
+  setCookie,
+  clearCookie
 }

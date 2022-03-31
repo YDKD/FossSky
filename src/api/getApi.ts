@@ -44,3 +44,10 @@ export function getRoutes() {
     method: 'GET'
   })
 }
+
+export function getPersonList() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/sys/person/list',
+    method: 'GET'
+  })
+}
