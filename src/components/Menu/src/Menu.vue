@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 10:19:48
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-28 17:36:51
+ * @LastEditTime: 2022-04-01 21:29:28
 -->
 <script lang="tsx">
 import { defineComponent, computed, unref } from 'vue'
@@ -163,10 +163,10 @@ export default defineComponent({
 
   // 水平菜单
   &__horizontal {
-    height: calc(~'var( - -top-tool-height)') !important;
+    height: calc(~'var( --top-tool-height)') !important;
 
     :deep(.@{elNamespace}-menu--horizontal) {
-      height: calc(~'var( - -top-tool-height)');
+      height: calc(~'var( --top-tool-height)');
       border-bottom: none;
       // 重新设置底部高亮颜色
       & > .@{elNamespace}-sub-menu.is-active {

@@ -20,6 +20,24 @@ export default defineConfig(({ command, mode }) => {
           javascriptEnabled: true
         }
       }
+    },
+    build: {
+      minify: 'terser',
+      outDir: 'dist',
+      sourcemap: false,
+      brotliSize: false
+    },
+    optimizeDeps: {
+      include: [
+        'vue',
+        'vue-router',
+        'vue-types',
+        'element-plus/es/locale/lang/zh-cn',
+        'element-plus/es/locale/lang/en',
+        '@iconify/iconify',
+        '@vueuse/core',
+        'axios'
+      ]
     }
   }
 })
