@@ -51,3 +51,11 @@ export function getPersonList() {
     method: 'GET'
   })
 }
+
+export function getPerson(params: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/sys/person',
+    method: 'GET',
+    params
+  })
+}

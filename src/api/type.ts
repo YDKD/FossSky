@@ -4,8 +4,13 @@ interface BaseReturnType {
   token: string
 }
 
+interface dataStructure {
+  result?: any
+  code: number
+}
+
 export interface ReutrnDataType extends BaseReturnType {
-  data: any
+  data: dataStructure
   returnCode: string
   success: boolean
 }

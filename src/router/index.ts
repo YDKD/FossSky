@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
+import Layout from '@/layout/index.vue'
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -25,6 +27,19 @@ const routes: RouteRecordRaw[] = [
     meta: {
       title: '重置密码'
     }
+  },
+  {
+    path: '/edit',
+    component: Layout,
+    children: [
+      {
+        path: 'person',
+        meta: {
+          title: '人员编辑'
+        },
+        component: () => import('@/views/manage/components/edit.vue')
+      }
+    ]
   }
 ]
 

@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 14:17:43
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-01 11:28:41
+ * @LastEditTime: 2022-04-01 15:38:47
 -->
 <template>
   <div :class="prefixCls">
@@ -72,12 +72,13 @@
           </template>
         </el-table-column>
         <el-table-column fixed="right" label="Operations" width="120">
-          <template #default>
+          <template #default="{ row }">
             <div class="operate">
               <icon-src-icon
                 icon="icon-edit"
                 class="cursor-pointer"
                 type="iconfont"
+                @click="edit(row)"
               ></icon-src-icon>
               <icon-src-icon
                 icon="icon-shanchu"
@@ -98,9 +99,7 @@ import { getPersonList } from '@/api/getApi'
 import { useDesign } from '@/hooks'
 import moment from 'moment'
 
-import { Button as FossButton } from '@/components/Button'
-
-import { formatGender, formatWorkStatus } from './hooks'
+import { formatGender, formatWorkStatus, edit } from './hooks'
 
 const prefixCls = useDesign('prefix', 'person-manage')
 
@@ -111,7 +110,6 @@ const getInitData = async () => {
     tableData.value = data.result
   }
 }
-
 getInitData()
 </script>
 
