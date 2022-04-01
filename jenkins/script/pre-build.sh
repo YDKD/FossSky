@@ -11,7 +11,7 @@ set -x
 #npm config set registry https://registry.npm.taobao.org
 #npm config set strict-ssl false
 # npm config set registry "http://npm.wild-fox.cn"
-# npm config set registry https://registry.npm.taobao.org
+npm config set registry https://registry.npm.taobao.org
 # npm config set registry http://124.223.39.149:4873/
 
 # npm config list
