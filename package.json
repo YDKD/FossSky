@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "cross-env vite",
-    "build": "cross-env vite build",
-    "build-dev": "cross-env vite build --mode dev",
-    "build-release": "cross-env vite build --mode release",
+    "build": "cross-env vue-tsc --noEmit --skipLibCheck && vite build",
+    "build-dev": "cross-env vue-tsc --noEmit --skipLibCheck && vite build --mode dev",
+    "build-release": "cross-env vue-tsc --noEmit --skipLibCheck && vite build --mode release",
     "lint": "eslint --fix --ext .js,.jsx,.vue,.ts,.tsx src/",
     "preview": "vite preview",
     "prettier": "prettier --write .",
@@ -64,7 +64,7 @@
     "vite": "2.9.1",
     "vite-plugin-purge-icons": "^0.8.1",
     "vue-eslint-parser": "^8.1.0",
-    "vue-tsc": "^0.29.8"
+    "vue-tsc": "0.33.9"
   },
   "config": {
     "commitizen": {
