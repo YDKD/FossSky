@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 14:17:43
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-30 21:01:39
+ * @LastEditTime: 2022-04-01 15:38:47
 -->
 <template>
   <div :class="prefixCls">
@@ -17,20 +17,12 @@
               icon="user-plus"
               class="cursor-pointer"
               color="var(--add-button)"
-              :size="16"
             ></icon-src-icon>
           </el-tooltip>
         </div>
       </template>
       <el-table :data="tableData" style="width: 100%" center>
         <el-table-column fixed prop="name" label="员工姓名" width="120" />
-        <el-table-column label="入职时间" min-width="180">
-          <template #default="{ row }">
-            {{
-              moment(row.createTime).utcOffset(8).format('YYYY/MM/DD HH:mm:ss')
-            }}
-          </template>
-        </el-table-column>
         <el-table-column label="性别" width="80">
           <template #default="{ row }">
             <icon-src-icon
@@ -58,6 +50,13 @@
         <el-table-column prop="duty" label="职位" />
         <el-table-column prop="homeAddress" label="家庭住址" />
         <el-table-column prop="phoneNumber" label="联系电话" min-width="120" />
+        <el-table-column label="入职时间" min-width="180">
+          <template #default="{ row }">
+            {{
+              moment(row.createTime).utcOffset(8).format('YYYY/MM/DD HH:mm:ss')
+            }}
+          </template>
+        </el-table-column>
         <el-table-column label="信息更新时间" min-width="180">
           <template #default="{ row }">
             {{
@@ -73,9 +72,20 @@
           </template>
         </el-table-column>
         <el-table-column fixed="right" label="Operations" width="120">
-          <template #default>
-            <el-button type="text" size="small">Detail</el-button>
-            <el-button type="text" size="small">Edit</el-button>
+          <template #default="{ row }">
+            <div class="operate">
+              <icon-src-icon
+                icon="icon-edit"
+                class="cursor-pointer"
+                type="iconfont"
+                @click="edit(row)"
+              ></icon-src-icon>
+              <icon-src-icon
+                icon="icon-shanchu"
+                class="cursor-pointer"
+                type="iconfont"
+              ></icon-src-icon>
+            </div>
           </template>
         </el-table-column>
       </el-table>
@@ -89,7 +99,7 @@ import { getPersonList } from '@/api/getApi'
 import { useDesign } from '@/hooks'
 import moment from 'moment'
 
-import { formatGender, formatWorkStatus } from './hooks'
+import { formatGender, formatWorkStatus, edit } from './hooks'
 
 const prefixCls = useDesign('prefix', 'person-manage')
 
@@ -100,7 +110,6 @@ const getInitData = async () => {
     tableData.value = data.result
   }
 }
-
 getInitData()
 </script>
 
@@ -115,6 +124,11 @@ getInitData()
   }
   .custom-cell {
     height: 100%;
+  }
+  .operate {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.3rem;
   }
 }
 </style>
