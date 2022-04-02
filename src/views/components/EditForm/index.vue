@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 15:43:39
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-02 17:47:05
+ * @LastEditTime: 2022-04-02 17:52:39
 -->
 <template>
   <div :class="[prefixCls, 'mt-4']">
@@ -177,10 +177,14 @@ getInitData(props)
 .@{prefix-cls} {
   .base-info {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-wrap: wrap;
     :deep(.el-select) {
       margin: 0 !important;
+    }
+    :deep(.el-select),
+    :deep(.el-input) {
+      width: 100% !important;
     }
     :deep(.el-form-item) {
       width: 20%;
