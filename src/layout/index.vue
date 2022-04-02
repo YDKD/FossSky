@@ -20,13 +20,17 @@ export default defineComponent({
     return () => (
       <div class={prefixCls}>
         <el-container class={['h-full']}>
-          <el-aside width="200px" class={['aside-bg h-full']}>
+          <el-aside
+            class={[
+              '!w-[var(--left-menu-max-width)] aside-bg h-full fixed left-shadow'
+            ]}
+          >
             {/* Logo part */}
             <Logo />
             {/* Menu part */}
             <Menu class="!h-[calc(100%-var(--logo-height))]" />
           </el-aside>
-          <el-container>
+          <el-container class="!ml-[var(--left-menu-max-width)]">
             <el-header class="!h-[var(--logo-height)]">
               {/* Header part */}
               <Header />
@@ -52,6 +56,9 @@ export default defineComponent({
   }
   .container-bg {
     background-color: var(--app-contnet-bg-color);
+  }
+  .left-shadow {
+    box-shadow: 0 0 5px var(--left-aside-shadow);
   }
 }
 </style>

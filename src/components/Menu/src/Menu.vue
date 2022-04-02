@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 10:19:48
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-01 21:29:28
+ * @LastEditTime: 2022-04-02 21:28:29
 -->
 <script lang="tsx">
 import { defineComponent, computed, unref } from 'vue'
@@ -133,7 +133,10 @@ export default defineComponent({
     .@{elNamespace}-menu {
       .@{elNamespace}-sub-menu__title,
       .@{elNamespace}-menu-item:not(.is-active) {
-        background-color: var(--left-menu-bg-light-color) !important;
+        color: var(--left-menu-text-color) !important;
+      }
+      .@{elNamespace}-menu-item:not(.is-active):hover {
+        background-color: rgb(243, 243, 245) !important;
       }
     }
   }

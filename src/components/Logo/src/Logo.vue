@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 16:04:05
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-25 11:00:09
+ * @LastEditTime: 2022-04-02 21:27:55
 -->
 <template>
   <div :class="prefixCls">
@@ -16,12 +16,7 @@
         src="@/assets/imgs/logo.png"
         class="w-[calc(var(--logo-height)-10px)] h-[calc(var(--logo-height)-10px)]"
       />
-      <span
-        :class="[
-          'pl-3 text-base font-bold text-[var(--logo-title-text-color)]'
-        ]"
-        >{{ title }}</span
-      >
+      <span :class="['pl-3 text-base font-bold']">{{ title }}</span>
     </div>
   </div>
 </template>
@@ -41,6 +36,6 @@ const title = computed(() => appStore.getWebSiteTitle)
 @prefix-cls: ~'@{namespace}-logo';
 
 .@{prefix-cls} {
-  color: white;
+  color: var(--logo-title-text-color);
 }
 </style>

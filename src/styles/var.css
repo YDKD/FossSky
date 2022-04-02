@@ -1,30 +1,32 @@
 :root {
+  --item-color-hover: rgba(24, 144, 255, 0.1);
   --dark-bg-color: #293146;
 
   /* left menu start */
+  --left-aside-shadow: #66b1ff;
   --left-menu-border-color: '#eee';
 
   --left-menu-max-width: 200px;
 
   --left-menu-min-width: 64px;
 
-  --left-menu-bg-color: #001529;
+  --left-menu-bg-color: #fff;
 
-  --left-menu-bg-light-color: #0f2438;
+  --left-menu-bg-light-color: #fff;
 
-  --left-menu-bg-active-color: var(--el-color-primary);
+  --left-menu-bg-active-color: var(--item-color-hover);
 
-  --left-menu-text-color: #bfcbd9;
+  --left-menu-text-color: rgb(51, 54, 57);
 
-  --left-menu-text-active-color: #fff;
+  --left-menu-text-active-color: #1890ff;
 
-  --left-menu-collapse-bg-active-color: var(--el-color-primary);
+  --left-menu-collapse-bg-active-color: var(--item-color-hover);
   /* left menu end */
 
   /* logo start */
   --logo-height: 50px;
 
-  --logo-title-text-color: #fff;
+  --logo-title-text-color: #1890ff;
 
   --logo-border-color: 'inherit';
   /* logo end */
