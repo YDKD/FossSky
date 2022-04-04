@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 18:42:32
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-04 16:28:40
+ * @LastEditTime: 2022-04-04 20:23:39
  */
 import { defaultRequest } from '@/service'
 import { ReutrnDataType } from './type'
@@ -43,7 +43,7 @@ export function login(data: any) {
 export function updatePersonInfo(userId: number, data: any) {
   return defaultRequest.request<ReutrnDataType>({
     url: `/sys/person/${userId}`,
-    method: 'POST',
+    method: 'PUT',
     data
   })
 }
