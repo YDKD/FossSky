@@ -3,8 +3,26 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 16:00:14
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-01 17:35:01
+ * @LastEditTime: 2022-04-04 15:23:06
  */
-import { getInitData, formData, formInstanceRef } from './useEdit'
+import {
+  getInitData,
+  formData,
+  formInstanceRef,
+  genderOptions,
+  departMentOptions,
+  workStatusOptions,
+  submitEditForm,
+  FormRules
+} from './useEdit'
 
-export { getInitData, formData, formInstanceRef }
+export {
+  getInitData,
+  formData,
+  formInstanceRef,
+  genderOptions,
+  departMentOptions,
+  workStatusOptions,
+  submitEditForm,
+  FormRules
+}
