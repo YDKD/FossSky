@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 15:43:39
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-04 17:08:59
+ * @LastEditTime: 2022-04-04 20:15:15
 -->
 <template>
   <div :class="[prefixCls, 'mt-4']">
@@ -114,7 +114,6 @@
               type="date"
               placeholder="Pick a Date"
               format="YYYY/MM/DD"
-              @change="change"
             />
           </el-form-item>
           <el-form-item label="信息更新时间：" prop="updateTime">
@@ -169,10 +168,8 @@ const props = defineProps({
   }
 })
 
-getInitData(props.queryInfoName, props.type)
-
-const change = () => {
-  console.log(new Date(formData.value.createTime).getTime())
+if (props.type == 'edit') {
+  getInitData(props.queryInfoName, props.type)
 }
 </script>
 
