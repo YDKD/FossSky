@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 15:43:39
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-04 20:15:15
+ * @LastEditTime: 2022-04-05 13:42:27
 -->
 <template>
   <div :class="[prefixCls, 'mt-4']">
@@ -85,6 +85,7 @@
           <el-form-item label="当前状态：" prop="workStatus">
             <el-select
               v-model="formData.workStatus"
+              :disabled="disableSelected"
               class="m-2"
               placeholder="请选择职工当前工作状态"
             >
@@ -133,7 +134,7 @@
         type="primary"
         size="default"
         :class="['mt-3']"
-        @click="submitEditForm(formInstanceRef)"
+        @click="submitEditForm(formInstanceRef, type)"
         >保存</el-button
       >
     </div>
@@ -141,7 +142,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, PropType } from 'vue'
+import { defineProps, PropType, computed } from 'vue'
 import { useDesign } from '@/hooks'
 import {
   getInitData,
@@ -151,7 +152,8 @@ import {
   departMentOptions,
   workStatusOptions,
   submitEditForm,
-  FormRules
+  FormRules,
+  handleInitData
 } from './hooks'
 
 import type { EditType } from './types'
@@ -168,9 +170,11 @@ const props = defineProps({
   }
 })
 
-if (props.type == 'edit') {
-  getInitData(props.queryInfoName, props.type)
-}
+handleInitData(props)
+
+const disableSelected = computed(() => {
+  return props.type == 'add' ? true : false
+})
 </script>
 
 <style lang="less" scoped>

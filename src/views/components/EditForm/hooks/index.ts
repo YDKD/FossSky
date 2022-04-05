@@ -13,7 +13,8 @@ import {
   departMentOptions,
   workStatusOptions,
   submitEditForm,
-  FormRules
+  FormRules,
+  handleInitData
 } from './useEdit'
 
 export {
@@ -24,5 +25,6 @@ export {
   departMentOptions,
   workStatusOptions,
   submitEditForm,
-  FormRules
+  FormRules,
+  handleInitData
 }

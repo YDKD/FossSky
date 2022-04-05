@@ -3,11 +3,11 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 16:00:19
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-04 19:52:21
+ * @LastEditTime: 2022-04-05 13:44:08
  */
 
 import { getPerson } from '@/api/getApi'
-import { updatePersonInfo } from '@/api/postApi'
+import { addPersonInfo, updatePersonInfo } from '@/api/postApi'
 import { useMessage, useTips } from '@/hooks'
 import type { FormInstance } from 'element-plus'
 
@@ -168,6 +168,14 @@ const workStatusOptions = [
   }
 ]
 
+const handleInitData = (props: any) => {
+  if (props.type == 'edit') {
+    getInitData(props.queryInfoName, props.type)
+  } else if (props.type == 'add') {
+    formData.value.workStatus = 1
+  }
+}
+
 const getInitData = async (queryInfoName?: string, type: string = 'edit') => {
   if (!queryInfoName) return
   if (type == 'edit') {
@@ -186,15 +194,21 @@ const getInitData = async (queryInfoName?: string, type: string = 'edit') => {
   }
 }
 
-const submitEditForm = async (formEl: FormInstance | undefined) => {
+const submitEditForm = async (
+  formEl: FormInstance | undefined,
+  type: 'edit' | 'add'
+) => {
   if (!formEl) return
   await formEl.validate(async (valid) => {
     if (valid) {
-      const { code, msg } = await updatePersonInfo(
-        formData.value.id,
-        formData.value
-      )
+      const { code, msg } = await (type == 'edit'
+        ? updatePersonInfo(formData.value.id, formData.value)
+        : addPersonInfo(formData.value))
       await useTips(code, msg)
+
+      if (type == 'edit') {
+        formInstanceRef.value?.resetFields()
+      }
     }
   })
 }
@@ -207,5 +221,6 @@ export {
   departMentOptions,
   workStatusOptions,
   submitEditForm,
-  FormRules
+  FormRules,
+  handleInitData
 }

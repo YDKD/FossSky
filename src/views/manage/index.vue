@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 14:17:43
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-02 11:13:41
+ * @LastEditTime: 2022-04-04 20:20:26
 -->
 <template>
   <div :class="prefixCls">
@@ -17,6 +17,7 @@
               icon="user-plus"
               class="cursor-pointer"
               color="var(--add-button)"
+              @click="addPerson"
             ></icon-src-icon>
           </el-tooltip>
         </div>
@@ -99,7 +100,7 @@ import { getPersonList } from '@/api/getApi'
 import { useDesign } from '@/hooks'
 import moment from 'moment'
 
-import { formatGender, formatWorkStatus, edit } from './hooks'
+import { formatGender, formatWorkStatus, edit, addPerson } from './hooks'
 
 const prefixCls = useDesign('prefix', 'person-manage')
 

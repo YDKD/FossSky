@@ -40,6 +40,19 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/manage/components/edit.vue')
       }
     ]
+  },
+  {
+    path: '/add',
+    component: Layout,
+    children: [
+      {
+        path: 'person',
+        meta: {
+          title: '人员添加'
+        },
+        component: () => import('@/views/manage/components/add.vue')
+      }
+    ]
   }
 ]
 
