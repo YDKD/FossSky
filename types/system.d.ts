@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 16:19:48
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-01 16:56:45
+ * @LastEditTime: 2022-04-04 19:35:02
  */
 
 import vue from 'vue'
@@ -13,7 +13,7 @@ declare global {
     // 身份证号
     IDcard: string
     // 年龄
-    age: number
+    age: number | string
     // 人员创建时间
     createTime: Date | string
     // 部门
@@ -21,7 +21,7 @@ declare global {
     // 职位
     duty: string
     // 性别
-    gender: number
+    gender: number | string
     // 家庭住址
     homeAddress: string
     // id
@@ -39,7 +39,7 @@ declare global {
     // 人员信息更新时间
     updateTime: Date | string
     // 当前状态
-    workStatus: number
+    workStatus: number | string
     // 入职时间
     workTime: Date | string
   }

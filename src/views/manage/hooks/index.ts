@@ -3,10 +3,24 @@
  * @Autor: YDKD
  * @Date: 2022-03-30 16:11:08
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-01 15:27:13
+ * @LastEditTime: 2022-04-05 14:08:05
  */
 
 import { formatGender, formatWorkStatus } from './useHandleBaseInfo'
-import { edit } from './useTable'
+import {
+  tableData,
+  getInitData,
+  addPerson,
+  editPerson,
+  deletePerson
+} from './useTable'
 
-export { formatGender, formatWorkStatus, edit }
+export {
+  formatGender,
+  formatWorkStatus,
+  tableData,
+  getInitData,
+  addPerson,
+  editPerson,
+  deletePerson
+}

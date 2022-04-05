@@ -1,9 +1,9 @@
 <template>
   <router-view v-slot="{ Component, route }">
     <transition :name="appStore.getAnimateMode" mode="out-in" appear>
-      <keep-alive>
-        <component :is="Component" :key="route.path" />
-      </keep-alive>
+      <!-- <keep-alive> -->
+      <component :is="Component" :key="route.path" />
+      <!-- </keep-alive> -->
     </transition>
   </router-view>
 </template>

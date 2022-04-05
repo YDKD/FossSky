@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 10:57:59
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-01 11:14:11
+ * @LastEditTime: 2022-04-04 20:02:08
 -->
 <template>
   <div :class="prefixCls">
@@ -42,7 +42,6 @@ const props = defineProps({
     default: ''
   }
 })
-console.log(props.icon)
 </script>
 
 <style lang="less" scoped>

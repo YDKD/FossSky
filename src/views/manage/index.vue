@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 14:17:43
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-01 15:38:47
+ * @LastEditTime: 2022-04-05 14:08:17
 -->
 <template>
   <div :class="prefixCls">
@@ -17,6 +17,7 @@
               icon="user-plus"
               class="cursor-pointer"
               color="var(--add-button)"
+              @click="addPerson"
             ></icon-src-icon>
           </el-tooltip>
         </div>
@@ -78,12 +79,13 @@
                 icon="icon-edit"
                 class="cursor-pointer"
                 type="iconfont"
-                @click="edit(row)"
+                @click="editPerson(row)"
               ></icon-src-icon>
               <icon-src-icon
                 icon="icon-shanchu"
                 class="cursor-pointer"
                 type="iconfont"
+                @click="deletePerson(row)"
               ></icon-src-icon>
             </div>
           </template>
@@ -94,22 +96,21 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { getPersonList } from '@/api/getApi'
 import { useDesign } from '@/hooks'
 import moment from 'moment'
 
-import { formatGender, formatWorkStatus, edit } from './hooks'
+import {
+  formatGender,
+  formatWorkStatus,
+  tableData,
+  getInitData,
+  addPerson,
+  editPerson,
+  deletePerson
+} from './hooks'
 
 const prefixCls = useDesign('prefix', 'person-manage')
 
-const tableData = ref([])
-const getInitData = async () => {
-  const { data } = await getPersonList()
-  if (data.code == 200) {
-    tableData.value = data.result
-  }
-}
 getInitData()
 </script>
 

@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 18:42:32
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-21 10:06:53
+ * @LastEditTime: 2022-04-04 20:44:17
  */
 import { defaultRequest } from '@/service'
 import { ReutrnDataType } from './type'
@@ -35,6 +35,22 @@ export function resetPass(data: any) {
 export function login(data: any) {
   return defaultRequest.request<ReutrnDataType>({
     url: '/user/login',
+    method: 'POST',
+    data
+  })
+}
+
+export function updatePersonInfo(userId: number, data: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: `/sys/person/${userId}`,
+    method: 'PUT',
+    data
+  })
+}
+
+export function addPersonInfo(data: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/sys/person',
     method: 'POST',
     data
   })

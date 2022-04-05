@@ -59,3 +59,10 @@ export function getPerson(params: any) {
     params
   })
 }
+
+export function getSerialNum() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/sys/person/serial_num',
+    method: 'GET'
+  })
+}
