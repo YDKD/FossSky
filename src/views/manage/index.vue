@@ -79,7 +79,7 @@
                 icon="icon-edit"
                 class="cursor-pointer"
                 type="iconfont"
-                @click="edit(row)"
+                @click="editPerson(row)"
               ></icon-src-icon>
               <icon-src-icon
                 icon="icon-shanchu"
@@ -100,7 +100,7 @@ import { getPersonList } from '@/api/getApi'
 import { useDesign } from '@/hooks'
 import moment from 'moment'
 
-import { formatGender, formatWorkStatus, edit, addPerson } from './hooks'
+import { formatGender, formatWorkStatus, editPerson, addPerson } from './hooks'
 
 const prefixCls = useDesign('prefix', 'person-manage')
 

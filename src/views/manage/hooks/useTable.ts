@@ -3,11 +3,11 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 15:25:58
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-04 20:21:07
+ * @LastEditTime: 2022-04-05 13:54:32
  */
 import router from '@/router'
 
-export const edit = (row: Person) => {
+export const editPerson = (row: Person) => {
   router.push({ path: '/edit/person', query: { name: row.name } })
 }
 
