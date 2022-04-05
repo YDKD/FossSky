@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 14:17:43
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-04 20:20:26
+ * @LastEditTime: 2022-04-05 14:08:17
 -->
 <template>
   <div :class="prefixCls">
@@ -85,6 +85,7 @@
                 icon="icon-shanchu"
                 class="cursor-pointer"
                 type="iconfont"
+                @click="deletePerson(row)"
               ></icon-src-icon>
             </div>
           </template>
@@ -95,22 +96,21 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { getPersonList } from '@/api/getApi'
 import { useDesign } from '@/hooks'
 import moment from 'moment'
 
-import { formatGender, formatWorkStatus, editPerson, addPerson } from './hooks'
+import {
+  formatGender,
+  formatWorkStatus,
+  tableData,
+  getInitData,
+  addPerson,
+  editPerson,
+  deletePerson
+} from './hooks'
 
 const prefixCls = useDesign('prefix', 'person-manage')
 
-const tableData = ref([])
-const getInitData = async () => {
-  const { data } = await getPersonList()
-  if (data.code == 200) {
-    tableData.value = data.result
-  }
-}
 getInitData()
 </script>
 

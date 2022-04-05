@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 15:43:39
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-05 13:42:27
+ * @LastEditTime: 2022-04-05 16:14:48
 -->
 <template>
   <div :class="[prefixCls, 'mt-4']">
@@ -66,7 +66,10 @@
         </template>
         <div class="base-info works-info">
           <el-form-item label="职工编号：" prop="serialNumber">
-            <el-input v-model="formData.serialNumber" />
+            <el-input
+              v-model="formData.serialNumber"
+              :disabled="disableSelected"
+            />
           </el-form-item>
           <el-form-item label="部门：" prop="department">
             <el-select
@@ -131,7 +134,6 @@
 
     <div class="save text-center">
       <el-button
-        type="primary"
         size="default"
         :class="['mt-3']"
         @click="submitEditForm(formInstanceRef, type)"
@@ -142,10 +144,9 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, PropType, computed } from 'vue'
+import { defineProps, PropType, computed, onBeforeUnmount } from 'vue'
 import { useDesign } from '@/hooks'
 import {
-  getInitData,
   formData,
   formInstanceRef,
   genderOptions,
@@ -171,6 +172,10 @@ const props = defineProps({
 })
 
 handleInitData(props)
+
+onBeforeUnmount(() => {
+  formInstanceRef.value?.resetFields()
+})
 
 const disableSelected = computed(() => {
   return props.type == 'add' ? true : false

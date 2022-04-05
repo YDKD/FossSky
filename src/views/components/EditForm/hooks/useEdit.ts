@@ -3,10 +3,10 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 16:00:19
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-05 13:44:08
+ * @LastEditTime: 2022-04-05 16:10:18
  */
 
-import { getPerson } from '@/api/getApi'
+import { getPerson, getSerialNum } from '@/api/getApi'
 import { addPersonInfo, updatePersonInfo } from '@/api/postApi'
 import { useMessage, useTips } from '@/hooks'
 import type { FormInstance } from 'element-plus'
@@ -168,11 +168,15 @@ const workStatusOptions = [
   }
 ]
 
-const handleInitData = (props: any) => {
+const handleInitData = async (props: any) => {
   if (props.type == 'edit') {
     getInitData(props.queryInfoName, props.type)
   } else if (props.type == 'add') {
     formData.value.workStatus = 1
+    const { data, code } = await getSerialNum()
+    if (code == 200) {
+      formData.value.serialNumber = data.result
+    }
   }
 }
 
