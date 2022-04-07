@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-23 16:46:13
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-23 17:02:13
+ * @LastEditTime: 2022-04-07 15:43:59
  */
 import variables from '@/styles/variables.module.less'
 
@@ -22,6 +22,6 @@ export const useDesign = (type: Type = 'prefix', componentScope?: string) => {
   if (type == 'prefix') {
     return getPrefixCls(componentScope!)
   } else {
-    return lessVariables
+    return variables
   }
 }

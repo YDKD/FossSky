@@ -36,7 +36,8 @@ export default defineConfig(({ command, mode }) => {
         '@iconify/iconify',
         '@vueuse/core',
         'axios',
-        'vue-types'
+        'vue-types',
+        'echarts'
       ]
     }
   }

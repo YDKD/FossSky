@@ -12,7 +12,7 @@ export const useRenderMenuTitle = () => {
   const renderMenuTitle = (meta?: RouteMeta) => {
     let icon
     const type = meta?.icon?.split('-')[0] == 'fa' ? 'iconify' : 'iconfont'
-    if (type == 'iconify' ) {
+    if (type == 'iconify') {
       icon = meta?.icon?.split('-')[1]
     } else {
       icon = meta?.icon
