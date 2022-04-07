@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 10:57:59
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-04 20:02:08
+ * @LastEditTime: 2022-04-07 14:58:26
 -->
 <template>
   <div :class="prefixCls">
@@ -23,24 +23,15 @@ import { defineProps, PropType } from 'vue'
 import { useDesign } from '@/hooks'
 import type { ButtonType } from 'element-plus'
 import type { ButtonSize } from '../types'
+import { propTypes } from '@/utils/propTypes'
 
 const prefixCls = useDesign('prefix', 'button')
 
 const props = defineProps({
-  text: {
-    type: String,
-    default: ''
-  },
-  type: {
-    type: String as PropType<ButtonType>
-  },
-  size: {
-    type: String as PropType<ButtonSize>
-  },
-  icon: {
-    type: String,
-    default: ''
-  }
+  text: propTypes.string.def(''),
+  type: propTypes.oneOf<ButtonType[]>([]).def('primary'),
+  size: propTypes.oneOf<ButtonSize[]>([]).def(),
+  icon: propTypes.string.def('')
 })
 </script>
 

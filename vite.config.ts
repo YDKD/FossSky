@@ -35,7 +35,8 @@ export default defineConfig(({ command, mode }) => {
         'element-plus/es/locale/lang/en',
         '@iconify/iconify',
         '@vueuse/core',
-        'axios'
+        'axios',
+        'vue-types'
       ]
     }
   }
