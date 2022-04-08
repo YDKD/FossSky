@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 15:43:39
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-05 16:14:48
+ * @LastEditTime: 2022-04-07 14:51:56
 -->
 <template>
   <div :class="[prefixCls, 'mt-4']">
@@ -158,17 +158,13 @@ import {
 } from './hooks'
 
 import type { EditType } from './types'
+import { propTypes } from '@/utils/propTypes'
 
 const prefixCls = useDesign('prefix', 'edit-form')
 
 const props = defineProps({
-  type: {
-    type: String as PropType<EditType>,
-    default: () => 'edit'
-  },
-  queryInfoName: {
-    type: String
-  }
+  type: propTypes.oneOf<EditType[]>(['add', 'edit']).def('edit'),
+  queryInfoName: propTypes.string.def('')
 })
 
 handleInitData(props)

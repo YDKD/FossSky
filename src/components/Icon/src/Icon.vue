@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 15:08:36
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-01 11:30:33
+ * @LastEditTime: 2022-04-08 09:06:21
 -->
 <template>
   <ElIcon :class="prefixCls" :size="size" :color="color">
@@ -20,25 +20,15 @@
 import { defineProps, computed, PropType } from 'vue'
 import { useDesign } from '@/hooks'
 
-import type { IconType } from '../types'
+import { propTypes } from '@/utils/propTypes'
 
 const prefixCls = useDesign('prefix', 'icon')
 
 const props = defineProps({
-  icon: {
-    type: String
-  },
-  color: {
-    type: String
-  },
-  size: {
-    type: Number,
-    default: () => 16
-  },
-  type: {
-    type: String as PropType<IconType>,
-    default: () => 'iconify'
-  }
+  icon: propTypes.string.def(''),
+  color: propTypes.string.def(''),
+  size: propTypes.number.def(16),
+  type: propTypes.oneOf<IconType[]>(['iconify', 'iconfont']).def('iconify')
 })
 
 const iconfontSize = computed(() => {

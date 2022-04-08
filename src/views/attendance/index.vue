@@ -1,24 +1,24 @@
 <!--
  * @Version: 1.0
  * @Autor: YDKD
- * @Date: 2022-03-24 15:42:06
+ * @Date: 2022-04-06 09:43:12
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-06 10:53:25
+ * @LastEditTime: 2022-04-06 10:13:21
 -->
 <template>
   <div :class="prefixCls">
-    <h2>我是analysis</h2>
+    <count-pnale />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useDesign } from '@/hooks'
-
-const prefixCls = useDesign('prefix', 'analysis')
+import countPnale from './components/count-panel.vue'
+const prefixCls = useDesign('prefix', 'person-attendance')
 </script>
 
 <style lang="less" scoped>
-@prefix-cls: ~'@{namespace}-analysis';
+@prefix-cls: ~'@{namespace}-person-attendance';
 
 .@{prefix-cls} {
 }

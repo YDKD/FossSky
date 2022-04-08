@@ -12,16 +12,13 @@
 
 <script lang="ts" setup>
 import { useDesign } from '@/hooks'
+import { propTypes } from '@/utils/propTypes'
 import { defineProps, withDefaults } from 'vue'
 
 const prefixCls = useDesign('prefix', 'bg-panel')
 
-interface Props {
-  headerText?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  headerText: '登录'
+const props = defineProps({
+  headerText: propTypes.string.def('登录')
 })
 </script>
 

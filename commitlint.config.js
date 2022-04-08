@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-04 16:54:48
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-04 17:05:22
+ * @LastEditTime: 2022-04-07 15:12:26
  */
 module.exports = {
   extends: ['@commitlint/config-conventional'],
@@ -37,7 +37,8 @@ module.exports = {
         'revert',
         'style',
         'test',
-        'release'
+        'release',
+        'types'
       ]
     ]
   }

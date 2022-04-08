@@ -16,6 +16,7 @@
     "@iconify/iconify": "^2.2.0",
     "@vueuse/core": "^8.1.1",
     "axios": "^0.25.0",
+    "echarts": "5.3.1",
     "element-plus": "^2.1.4",
     "less": "^4.1.2",
     "lodash": "^4.17.21",
@@ -28,6 +29,7 @@
     "pinia": "^2.0.9",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12",
+    "vue-types": "^4.1.1",
     "web-storage-cache": "^1.1.1"
   },
   "devDependencies": {

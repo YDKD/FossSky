@@ -6,12 +6,11 @@ module.exports = {
     es2021: true
   },
   extends: [
-    'eslint:recommended',
-    'plugin:vue/essential',
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
+    'prettier',
     'plugin:prettier/recommended',
-    'prettier'
+    'plugin:vue/essential'
   ],
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -35,6 +34,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'vue/no-multiple-template-root': 'off',
+    'vue/no-v-model-argument': 'off',
     'no-useless-escape': 'off',
     'vue/html-self-closing': [
       'error',

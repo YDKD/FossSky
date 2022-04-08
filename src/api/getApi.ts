@@ -66,3 +66,11 @@ export function getSerialNum() {
     method: 'GET'
   })
 }
+
+export function getWorkerAttendance(params: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/sys/person/attendance',
+    method: 'GET',
+    params
+  })
+}
