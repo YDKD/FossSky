@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 15:08:36
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-07 14:51:07
+ * @LastEditTime: 2022-04-08 09:06:21
 -->
 <template>
   <ElIcon :class="prefixCls" :size="size" :color="color">
@@ -20,7 +20,6 @@
 import { defineProps, computed, PropType } from 'vue'
 import { useDesign } from '@/hooks'
 
-import type { IconType } from '../types'
 import { propTypes } from '@/utils/propTypes'
 
 const prefixCls = useDesign('prefix', 'icon')

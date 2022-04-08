@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 16:19:48
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-04 19:35:02
+ * @LastEditTime: 2022-04-07 17:46:05
  */
 
 import vue from 'vue'
@@ -43,4 +43,5 @@ declare global {
     // 入职时间
     workTime: Date | string
   }
+  type IconType = 'iconify' | 'iconfont'
 }

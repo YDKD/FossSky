@@ -34,6 +34,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'vue/no-multiple-template-root': 'off',
+    'vue/no-v-model-argument': 'off',
     'no-useless-escape': 'off',
     'vue/html-self-closing': [
       'error',

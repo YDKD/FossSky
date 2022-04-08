@@ -7,6 +7,7 @@ interface BaseReturnType {
 interface dataStructure {
   result?: any
   code: number
+  total: number
 }
 
 export interface ReutrnDataType extends BaseReturnType {

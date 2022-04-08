@@ -3,14 +3,14 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 10:57:59
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-07 14:58:26
+ * @LastEditTime: 2022-04-07 17:52:39
 -->
 <template>
   <div :class="prefixCls">
     <el-button>
       <icon-src-icon
         v-if="icon != ''"
-        type="iconfont"
+        :type="iconType"
         :icon="icon"
       ></icon-src-icon>
       {{ text }}
@@ -29,9 +29,12 @@ const prefixCls = useDesign('prefix', 'button')
 
 const props = defineProps({
   text: propTypes.string.def(''),
-  type: propTypes.oneOf<ButtonType[]>([]).def('primary'),
-  size: propTypes.oneOf<ButtonSize[]>([]).def(),
-  icon: propTypes.string.def('')
+  type: propTypes.oneOf<ButtonType[]>(['primary']).def('primary'),
+  size: propTypes
+    .oneOf<ButtonSize[]>(['default', 'large', 'small'])
+    .def('small'),
+  icon: propTypes.string.def(''),
+  iconType: propTypes.oneOf<IconType[]>(['iconify', 'iconfont']).def('iconify')
 })
 </script>
 
