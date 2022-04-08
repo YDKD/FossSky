@@ -3,11 +3,12 @@
  * @Autor: YDKD
  * @Date: 2022-04-07 17:14:45
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-08 10:30:41
+ * @LastEditTime: 2022-04-08 17:44:22
  */
 
 import { getWorkerAttendance } from '@/api/getApi'
 import { ref, unref, computed } from 'vue'
+import moment from 'moment'
 
 const queryData = ref({
   search: '',
@@ -40,6 +41,18 @@ const vacationType = {
 }
 
 const hideSinglePage = computed(() => total.value < queryData.value.pageSize)
+
+const formatDate = (date: any) => {
+  return moment(date).utcOffset(8).format('YYYY/MM/DD HH:mm:ss')
+}
+
+const callWithHandle = (filed: any, cb: any) => {
+  if (filed) {
+    return cb
+  } else {
+    return '-'
+  }
+}
 export {
   getInitData,
   tableData,
@@ -47,5 +60,7 @@ export {
   queryData,
   hideSinglePage,
   record,
-  vacationType
+  vacationType,
+  formatDate,
+  callWithHandle
 }
