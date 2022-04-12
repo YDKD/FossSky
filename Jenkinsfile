@@ -112,6 +112,26 @@ pipeline {
             }
         }
 
+        stage('restart container') {
+
+            when {
+                anyOf {
+                    branch 'dev'
+                }
+            }
+            agent {
+                docker {
+                    image 'node:14.18.0'
+                    reuseNode true
+                }
+            }
+
+            steps {
+                sh 'restart'
+                sh './jenkins/script/restart.sh'
+            }
+        }
+
         stage("artifacts-manage"){
             when {
                 expression{
@@ -130,13 +150,13 @@ pipeline {
                 expression{
                     return fileExists("${resetFlagFile}")
                 }
-                anyOf { 
+                anyOf {
                     branch 'dev'
                     branch 'release'
                     branch 'master'
                     }
                 }
-            
+
             steps {
                 echo "是回滚啊啊啊啊"
                 //当然我们这里为了方便下载
@@ -174,7 +194,7 @@ pipeline {
     }
 
     //post 就是流水线的运行结果状态啦，我们慢点会在这里设置邮件通
-    post { 
+    post {
         changed{
             echo 'I changed!'
         }
@@ -187,7 +207,7 @@ pipeline {
                    emailext(
                     subject: "Job [${env.JOB_NAME}] - Status: fail",
                     body: """${template}""",
-                    recipientProviders: [culprits(),requestor(),developers()], 
+                    recipientProviders: [culprits(),requestor(),developers()],
                     to: "ydkd0606@163.com",
                    )
                }
@@ -203,7 +223,7 @@ pipeline {
                    emailext(
                     subject: "Job [${env.JOB_NAME}] - Status: Success",
                     body: """${template}""",
-                    recipientProviders: [requestor(),developers()], 
+                    recipientProviders: [requestor(),developers()],
                     to: "ydkd0606@163.com",
                    )
                }
