@@ -17,6 +17,25 @@ pipeline {
     }
 
     stages {
+        stage('stop container') {
+
+            when {
+                anyOf {
+                    branch 'dev'
+                }
+            }
+            agent {
+                docker {
+                    image 'node:14.18.0'
+                    reuseNode true
+                }
+            }
+
+            steps {
+                sh './jenkins/script/stop.sh'
+            }
+        }
+
         stage('pre-build') {           //  自定义步骤 pre-build
 
             when {
@@ -127,7 +146,6 @@ pipeline {
             }
 
             steps {
-                sh 'restart'
                 sh './jenkins/script/restart.sh'
             }
         }
