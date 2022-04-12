@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 15:43:39
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-07 14:51:56
+ * @LastEditTime: 2022-04-12 16:13:07
 -->
 <template>
   <div :class="[prefixCls, 'mt-4']">
@@ -99,6 +99,9 @@
                 :value="item.value"
               />
             </el-select>
+          </el-form-item>
+          <el-form-item label="职位：" prop="duty">
+            <el-input v-model="formData.duty" />
           </el-form-item>
           <el-form-item label="入职时间：" prop="createTime">
             <el-date-picker

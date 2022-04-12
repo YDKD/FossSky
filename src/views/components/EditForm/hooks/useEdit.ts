@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-01 16:00:19
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-05 16:10:18
+ * @LastEditTime: 2022-04-12 16:12:50
  */
 
 import { getPerson, getSerialNum } from '@/api/getApi'
@@ -11,7 +11,7 @@ import { addPersonInfo, updatePersonInfo } from '@/api/postApi'
 import { useMessage, useTips } from '@/hooks'
 import type { FormInstance } from 'element-plus'
 
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 const formInstanceRef = ref<FormInstance>()
 
@@ -97,6 +97,13 @@ const FormRules = reactive({
     {
       required: true,
       message: '请输入职工身份证号',
+      trigger: 'blur'
+    }
+  ],
+  duty: [
+    {
+      required: true,
+      message: '请输入职工职位',
       trigger: 'blur'
     }
   ],
