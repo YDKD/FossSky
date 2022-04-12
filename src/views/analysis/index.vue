@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-24 15:42:06
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-12 09:37:30
+ * @LastEditTime: 2022-04-12 16:17:50
 -->
 <template>
   <div :class="prefixCls">
@@ -17,16 +17,16 @@
             <div class="person-add">
               <div :class="['add-panel py-2']">
                 <div class="pa-item">
-                  <h2 :class="['font-semibold']">Dashboard</h2>
-                  <span :class="['text-slate-400']">add person line</span>
+                  <h2 :class="['font-semibold']">面板</h2>
+                  <span :class="['text-slate-400']">职工加入折线图</span>
                 </div>
                 <div class="pa-item">
                   <h2 :class="['font-semibold']">{{ total }}人</h2>
-                  <span :class="['text-slate-400']">join workers</span>
+                  <span :class="['text-slate-400']">总加入职工数</span>
                 </div>
                 <div class="pa-item">
                   <h2 :class="['font-semibold']">{{ count_month }}月</h2>
-                  <span :class="['text-slate-400']">count workers month</span>
+                  <span :class="['text-slate-400']">统计月份</span>
                 </div>
               </div>
               <analysis-line />

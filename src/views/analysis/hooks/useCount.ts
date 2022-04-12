@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-11 16:50:55
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-12 09:35:40
+ * @LastEditTime: 2022-04-12 16:19:43
  */
 import { getCountTotal } from '@/api/getApi'
 import { useAnalysisStore } from '@/store/modules/analysis'
@@ -42,7 +42,7 @@ const setCountValue = () => {
           icon: 'icon-suoyourenyuan'
         },
         {
-          label: '系统人员总数总数',
+          label: '系统人员总数',
           value: analysisStore.getTotalSystemDevelopers,
           class: 'total_developers',
           icon: 'icon-guanliyuan'

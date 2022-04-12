@@ -3,14 +3,14 @@
  * @Autor: YDKD
  * @Date: 2022-04-08 13:53:40
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-11 09:43:38
+ * @LastEditTime: 2022-04-12 16:16:12
  */
 import type { EChartsOption } from 'echarts'
 import moment from 'moment'
 
 export const lineOptions: EChartsOption = {
   title: {
-    text: 'join workers',
+    text: '加入职工数',
     left: 'center'
   },
   xAxis: {
@@ -38,7 +38,7 @@ export const lineOptions: EChartsOption = {
 
 export const pipeOptions: EChartsOption = {
   title: {
-    text: 'Attendance Pip',
+    text: '考勤统计',
     subtext: moment().format('L'),
     left: 'center'
   },
