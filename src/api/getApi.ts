@@ -74,3 +74,24 @@ export function getWorkerAttendance(params: any) {
     params
   })
 }
+
+export function getAddPerson() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/analysis/person/add',
+    method: 'GET'
+  })
+}
+
+export function getLeavingPerson() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/analysis/person/leaving',
+    method: 'GET'
+  })
+}
+
+export function getCountTotal() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/analysis/count/total',
+    method: 'GET'
+  })
+}

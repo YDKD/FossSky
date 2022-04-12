@@ -1,6 +1,6 @@
 import * as echarts from 'echarts/core'
 
-import { PieChart } from 'echarts/charts'
+import { PieChart, LineChart } from 'echarts/charts'
 
 import {
   TitleComponent,
@@ -25,7 +25,8 @@ echarts.use([
   ParallelComponent,
   PieChart,
   CanvasRenderer,
-  ToolboxComponent
+  ToolboxComponent,
+  LineChart
 ])
 
 export default echarts
