@@ -59,6 +59,13 @@ export function getPerson(params: any) {
     params
   })
 }
+export function getWorkerSalary(params: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/sys/person/salary',
+    method: 'GET',
+    params
+  })
+}
 
 export function getSerialNum() {
   return defaultRequest.request<ReutrnDataType>({

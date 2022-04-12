@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-19 18:42:32
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-04 20:44:17
+ * @LastEditTime: 2022-04-12 15:21:44
  */
 import { defaultRequest } from '@/service'
 import { ReutrnDataType } from './type'
@@ -51,6 +51,14 @@ export function updatePersonInfo(userId: number, data: any) {
 export function addPersonInfo(data: any) {
   return defaultRequest.request<ReutrnDataType>({
     url: '/sys/person',
+    method: 'POST',
+    data
+  })
+}
+
+export function updateWorkerSalary(data: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/sys/person/salary',
     method: 'POST',
     data
   })
