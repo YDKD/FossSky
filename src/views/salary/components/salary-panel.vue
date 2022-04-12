@@ -18,13 +18,8 @@
       </el-input>
     </div>
     <div :class="['salary-form mt-2']">
-      <el-card shadow="hover">
-        <el-form
-          v-if="queried"
-          ref="salaryFormRef"
-          :model="salaryForm"
-          label-width="80px"
-        >
+      <el-card v-if="queried" shadow="hover">
+        <el-form ref="salaryFormRef" :model="salaryForm" label-width="80px">
           <el-form-item label="工资编号">
             <el-input v-model="salaryForm.id" disabled></el-input>
           </el-form-item>

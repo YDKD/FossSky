@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-12 10:27:55
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-12 15:42:33
+ * @LastEditTime: 2022-04-12 15:52:23
  */
 import { getWorkerSalary } from '@/api/getApi'
 import { updateWorkerSalary } from '@/api/postApi'
@@ -13,7 +13,7 @@ import { computed, ref } from 'vue'
 
 import type { SalaryForm } from '../types'
 
-const searchName = ref('小王')
+const searchName = ref()
 
 const queried = ref(false)
 
