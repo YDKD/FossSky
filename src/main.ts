@@ -5,11 +5,11 @@ import 'normalize.css'
 
 import '@purge-icons/generated'
 
-// import global css
-import '@/styles/index.less'
-
 import './assets/css/index.less'
 import './assets/css/tailwind.css'
+
+// import global css
+import '@/styles/index.less'
 
 import router from './router'
 import { setupStore } from './store'

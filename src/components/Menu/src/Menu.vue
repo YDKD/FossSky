@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 10:19:48
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-02 21:28:29
+ * @LastEditTime: 2022-04-12 15:53:30
 -->
 <script lang="tsx">
 import { defineComponent, computed, unref } from 'vue'
@@ -27,7 +27,6 @@ export default defineComponent({
       }
       return path
     })
-    console.log(unref(activeMenu))
 
     const appStore = useAppStore()
 
@@ -36,8 +35,6 @@ export default defineComponent({
     const permissionStore = usePermissionStore()
 
     const routes = permissionStore.getRouters
-
-    console.log(unref(routes))
 
     return () => (
       <div class={[prefixCls, 'h-full overflow-hidden flex-col text-white']}>

@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-07 17:14:27
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-08 10:31:04
+ * @LastEditTime: 2022-04-08 17:42:48
  */
 import {
   getInitData,
@@ -12,7 +12,9 @@ import {
   queryData,
   hideSinglePage,
   record,
-  vacationType
+  vacationType,
+  formatDate,
+  callWithHandle
 } from './useTable'
 
 export {
@@ -22,5 +24,7 @@ export {
   queryData,
   hideSinglePage,
   record,
-  vacationType
+  vacationType,
+  formatDate,
+  callWithHandle
 }

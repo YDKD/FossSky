@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-04-06 10:32:17
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-07 16:12:17
+ * @LastEditTime: 2022-04-08 16:07:29
 -->
 <template>
   <div ref="elRef" :class="[$attrs.class, prefixCls]" :style="styles"></div>
@@ -50,10 +50,8 @@ const options = computed(() => {
   })
 })
 
-// eslint-disable-next-line no-undef
 const elRef = ref<ElRef>()
 
-// eslint-disable-next-line no-undef
 let echartRef: Nullable<echarts.ECharts> = null
 
 const contentEl = ref<Element>()
@@ -94,7 +92,7 @@ const resizeHandler = debounce(() => {
 }, 100)
 
 const contentResizeHandler = async (e: TransitionEvent) => {
-  if (e.propertyName === 'width') {
+  if (e.propertyName === 'transform') {
     resizeHandler()
   }
 }
@@ -104,23 +102,21 @@ onMounted(() => {
 
   window.addEventListener('resize', resizeHandler)
 
-  // contentEl.value = document.getElementsByClassName(
-  //   `${namespace}-layout-content`
-  // )[0]
-  // unref(contentEl) &&
-  //   (unref(contentEl) as HTMLElement).addEventListener(
-  //     'transitionend',
-  //     contentResizeHandler
-  //   )
+  contentEl.value = document.getElementsByClassName(`${namespace}-container`)[0]
+  unref(contentEl) &&
+    (unref(contentEl) as HTMLElement).addEventListener(
+      'transitionend',
+      contentResizeHandler
+    )
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', resizeHandler)
-  // unref(contentEl) &&
-  //   (unref(contentEl) as HTMLElement).removeEventListener(
-  //     'transitionend',
-  //     contentResizeHandler
-  //   )
+  unref(contentEl) &&
+    (unref(contentEl) as HTMLElement).removeEventListener(
+      'transitionend',
+      contentResizeHandler
+    )
 })
 
 onActivated(() => {

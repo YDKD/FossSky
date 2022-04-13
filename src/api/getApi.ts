@@ -59,6 +59,13 @@ export function getPerson(params: any) {
     params
   })
 }
+export function getWorkerSalary(params: any) {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/sys/person/salary',
+    method: 'GET',
+    params
+  })
+}
 
 export function getSerialNum() {
   return defaultRequest.request<ReutrnDataType>({
@@ -72,5 +79,26 @@ export function getWorkerAttendance(params: any) {
     url: '/sys/person/attendance',
     method: 'GET',
     params
+  })
+}
+
+export function getAddPerson() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/analysis/person/add',
+    method: 'GET'
+  })
+}
+
+export function getLeavingPerson() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/analysis/person/leaving',
+    method: 'GET'
+  })
+}
+
+export function getCountTotal() {
+  return defaultRequest.request<ReutrnDataType>({
+    url: '/analysis/count/total',
+    method: 'GET'
   })
 }
