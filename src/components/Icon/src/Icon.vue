@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-28 15:08:36
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-12 15:53:27
+ * @LastEditTime: 2022-05-05 18:07:54
 -->
 <template>
   <ElIcon :class="prefixCls" :size="size" :color="color">
@@ -32,7 +32,7 @@ const props = defineProps({
 })
 
 const iconfontSize = computed(() => {
-  return props.size > 16 ? '2.4rem' : '20px'
+  return props.size + 'px'
 })
 </script>
 

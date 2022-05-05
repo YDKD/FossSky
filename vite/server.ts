@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-04 13:39:38
  * @LastEditors: YDKD
- * @LastEditTime: 2022-04-08 11:37:26
+ * @LastEditTime: 2022-05-05 18:49:30
  */
 import generateEnv from './utils/generateEnv'
 generateEnv()
@@ -11,6 +11,7 @@ generateEnv()
 const server = {
   port: 3000,
   hmr: true,
+  host: '0.0.0.0',
   proxy: {
     '/home': {
       target: process.env.VITE_REQUEST_URL,
