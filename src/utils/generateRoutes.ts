@@ -3,7 +3,7 @@
  * @Autor: YDKD
  * @Date: 2022-03-23 11:00:44
  * @LastEditors: YDKD
- * @LastEditTime: 2022-03-28 17:28:25
+ * @LastEditTime: 2022-07-17 14:33:37
  */
 
 // to dynamic import component
@@ -57,5 +57,7 @@ export const generateRouter = (
     }
     return _routes
   })
+  console.log('_route', newRoutes)
+
   return newRoutes
 }
