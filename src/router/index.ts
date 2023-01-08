@@ -15,27 +15,6 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/test-1',
-    component: () => import('@/views/test/index.vue'),
-    meta: {
-      title: '通行扫码'
-    }
-  },
-  {
-    path: '/test-2',
-    component: () => import('@/views/test/a.vue'),
-    meta: {
-      title: '通行扫码'
-    }
-  },
-  {
-    path: '/test-3',
-    component: () => import('@/views/test/b.vue'),
-    meta: {
-      title: '通行扫码'
-    }
-  },
-  {
     path: '/register',
     component: () => import('@/views/register/index.vue'),
     meta: {
