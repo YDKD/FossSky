@@ -17,24 +17,24 @@ pipeline {
     }
 
     stages {
-        stage('stop container') {
+        // stage('stop container') {
 
-            when {
-                anyOf {
-                    branch 'dev'
-                }
-            }
-            agent {
-                docker {
-                    image 'node:14.18.0'
-                    reuseNode true
-                }
-            }
+        //     when {
+        //         anyOf {
+        //             branch 'dev'
+        //         }
+        //     }
+        //     agent {
+        //         docker {
+        //             image 'node:14.18.0'
+        //             reuseNode true
+        //         }
+        //     }
 
-            steps {
-                sh './jenkins/script/stop.sh'
-            }
-        }
+        //     steps {
+        //         sh './jenkins/script/stop.sh'
+        //     }
+        // }
 
         stage('pre-build') {           //  自定义步骤 pre-build
 
@@ -131,24 +131,24 @@ pipeline {
             }
         }
 
-        stage('restart container') {
+        // stage('restart container') {
 
-            when {
-                anyOf {
-                    branch 'dev'
-                }
-            }
-            agent {
-                docker {
-                    image 'node:14.18.0'
-                    reuseNode true
-                }
-            }
+        //     when {
+        //         anyOf {
+        //             branch 'dev'
+        //         }
+        //     }
+        //     agent {
+        //         docker {
+        //             image 'node:14.18.0'
+        //             reuseNode true
+        //         }
+        //     }
 
-            steps {
-                sh './jenkins/script/restart.sh'
-            }
-        }
+        //     steps {
+        //         sh './jenkins/script/restart.sh'
+        //     }
+        // }
 
         stage("artifacts-manage"){
             when {
