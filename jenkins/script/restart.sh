@@ -1,5 +1,5 @@
 #! /bin/bash
-
+source /etc/profile
 # set -x
 # restart mysql
 docker start mysql
